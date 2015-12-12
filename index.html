@@ -25,15 +25,7 @@ ctx.canvas.width  = window.innerWidth;
 ctx.canvas.height = window.innerHeight;
 var W = canvas.width;
 var H = canvas.height;
-
-
-var 	orMoon = 2*rEarth,
-	rMoon = 0.5*rEarth, //Radius of Earth
-	xMoon = xEarth+orMoon, //Starting locations, scale to size of window
-    	yMoon = 400, 
-    	aMoon = 0; //0 as default, starting angle of earth's roation
     	
-
 //Earth Parameters, default radius = 6.378
 var 	rEarth = 0.01*H, //Radius of Earth
 	xEarth = 0.75*W, //Starting locations, scale to size of window
@@ -44,8 +36,13 @@ if (H > W){
 } else {
 	orEarth = 0.3*H; //1,496,000 by default, orbital radius
 }
-    
-    
+
+var 	orMoon = 2*rEarth,
+	rMoon = 0.5*rEarth, //Radius of Earth
+	xMoon = xEarth+orMoon, //Starting locations, scale to size of window
+    	yMoon = 400, 
+    	aMoon = 0; //0 as default, starting angle of earth's roation
+
 //Sun Parameters, default radius = 695.450
 var 	rSun = 0.1*H, //Radius of Sun
 	xSun = 0.5*W, //Locations, scale to size of window
