@@ -1,3 +1,2 @@
-# thingrip.github.com
-Testing GitHub pages
+Host for Solar System Javascript Animation
 ***
