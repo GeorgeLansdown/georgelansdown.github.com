@@ -62,10 +62,10 @@ var 	rSun = 0.1*H, //Radius of Sun
 
 
 //FUNCTIONS - DRAWING SHAPES
-function drawText(text, x, y){
+function drawText(text, x, y, aligment){
 	ctx.font = "15px Verdana";
         ctx.fillStyle = "white";
-        ctx.textAlign = "center";
+        ctx.textAlign = alignment;
         ctx.fillText(text, x, y); 
 }
 function drawCircle(x, y, radius, colour){
@@ -77,7 +77,7 @@ function drawCircle(x, y, radius, colour){
 
 //FUNCTIONS - DRAWING BODIES
 function drawSun(){
-	drawText("Sun", xSun, ySun-rSun-rMoon);
+	drawText("Sun", xSun, ySun-rSun-rMoon, "center");
 	drawCircle(xSun, ySun, rSun, "#FFFF00"); //Yellow
 }
 function drawMoon(){ 
@@ -86,8 +86,6 @@ function drawMoon(){
 	xMoon = Math.cos(aMoon*(Math.PI/180))*orMoon+(xEarth); 
   	yMoon = Math.sin(aMoon*(Math.PI/180))*orMoon+(yEarth); 
   
-  
-  	//drawText("Moon", xMoon, yMoon-rMoon-20);
 	drawCircle(xMoon, yMoon, rMoon, "#888888"); //Grey
 }
 function drawEarth(){
@@ -96,7 +94,7 @@ function drawEarth(){
 	xEarth = Math.cos(aEarth*(Math.PI/180))*orEarth+(xSun); //Finds x coord for Earth using the formula cos(angle)*orbital radius + x origin. Features correction from radians to degrees.
   	yEarth = Math.sin(aEarth*(Math.PI/180))*orEarth+(ySun); //Finds y coord for Earth using the formula sin(angle)*orbital radius + y origin. Features correction from radians to degrees.
   	
-  	drawText("Earth", xEarth, yEarth-rEarth-rMoon);
+  	drawText("Earth", xEarth, yEarth-rEarth-rMoon, "center");
   	drawCircle(xEarth, yEarth, rEarth, "#0000FF");//Blue
 }
 
@@ -104,7 +102,7 @@ function drawEarth(){
 function draw(){
 	ctx.clearRect(0, 0, W, H);
 
-	drawText("George Lansdown", 0, H-5);
+	drawText("George Lansdown- George@Lansdown.me", 0, H-5, "left");
 
 	drawSun();
   	drawEarth();
