@@ -89,25 +89,25 @@ function drawSun(xOrigin, yOrigin){
 function drawMoon(xOrigin, yOrigin){ 
   	aMoon += 13.538/timeFactor;
   
-	xMoon = Math.cos(aMoon*(Math.PI/180))*(orMoon/scaleFactor)+(xOrigin); 
-  	yMoon = Math.sin(aMoon*(Math.PI/180))*(orMoon/scaleFactor)+(yOrigin); 
+	xMoon = Math.cos(aMoon*(Math.PI/180))*(orMoon/scaleFactor)+(xEarth); 
+  	yMoon = Math.sin(aMoon*(Math.PI/180))*(orMoon/scaleFactor)+(yEarth); 
   
 	drawCircle(xMoon, yMoon, (rMoon/scaleFactor), "#888888"); //Grey
 }
 function drawEarth(xOrigin, yOrigin){
 	aEarth += 3.65256/timeFactor; //Size of angle increment, one orbit per 10 seconds, 36 degrees a second, 0.6 per tick
   
-	xEarth = Math.cos(aEarth*(Math.PI/180))*(orEarth/scaleFactor)+(xOrigin); //Finds x coord for Earth using the formula cos(angle)*orbital radius + x origin. Features correction from radians to degrees.
-  	yEarth = Math.sin(aEarth*(Math.PI/180))*(orEarth/scaleFactor)+(yOrigin); //Finds y coord for Earth using the formula sin(angle)*orbital radius + y origin. Features correction from radians to degrees.
+	xEarth = Math.cos(aEarth*(Math.PI/180))*(orEarth/scaleFactor)+(xFocus); //Finds x coord for Earth using the formula cos(angle)*orbital radius + x origin. Features correction from radians to degrees.
+  	yEarth = Math.sin(aEarth*(Math.PI/180))*(orEarth/scaleFactor)+(yFocus); //Finds y coord for Earth using the formula sin(angle)*orbital radius + y origin. Features correction from radians to degrees.
   	
   	drawText("Earth", xEarth, yEarth-(rEarth/scaleFactor)-10, "center");
   	drawCircle(xEarth, yEarth, (rEarth/scaleFactor), "#0000FF");//Blue
 }
-function drawMars(xOrigin, yOrigin){
+function drawMars(){
 	aMars += 1.9428/timeFactor;
 	
-	xMars = Math.cos(aMars*(Math.PI/180))*(orMars/scaleFactor)+(xOrigin); 
-  	yMars = Math.sin(aMars*(Math.PI/180))*(orMars/scaleFactor)+(yOrigin);
+	xMars = Math.cos(aMars*(Math.PI/180))*(orMars/scaleFactor)+(xFocus); 
+  	yMars = Math.sin(aMars*(Math.PI/180))*(orMars/scaleFactor)+(yFocus);
   	
   	drawText("Mars", xMars, yMars, yMars-(rMars/scaleFactor)-20, "center");
   	drawCircle(xMars, yMars, (rMars/scaleFactor), "#C1440E");//Red/Brown
@@ -121,10 +121,10 @@ function draw(){
 	drawText("Scale Factor: " + String(1/scaleFactor).substring(0,3), W, H-5, "right")
 	drawText("Time Factor: " + String(1/timeFactor).substring(0,3), W, H-20, "right")
 	
-	drawSun(xFocus, yFocus);
-  	drawEarth(xFocus, yFocus);
-  	drawMoon(xEarth, yEarth);
-  	drawMars(xFocus, yFocus);
+	drawSun();
+  	drawEarth();
+  	drawMoon();
+  	drawMars();
 }
 
 document.addEventListener('keydown', function(cheese) {
