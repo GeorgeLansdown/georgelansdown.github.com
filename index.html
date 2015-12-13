@@ -67,12 +67,12 @@ function drawCircle(x, y, radius, colour){
   	ctx.fill();
 }
 function drawLabel(x, y, text){
+	ctx.strokeStyle = "#000000";
 	ctx.moveTo(x,y);
 	ctx.lineTo(x+100, y-100);
   	ctx.moveTo(x+100,y-100);
   	ctx.lineTo(x+100+(text.length*10), y-100);
 	ctx.stroke();
-  	ctx.strokeStyle = "#000000";
   	
 	drawText(text, x+100, y-100);
 }
