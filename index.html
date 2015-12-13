@@ -9,17 +9,12 @@ html, body {
 	height: 100%;
 	margin: 0px;
 }
-h2 {
-	text-size:10px;
-	color:white;
-}
 </style>
 
 
 
 <script>
 //JAVASCRIPT
-
 //INITIALSING CANVAS
 var 	canvas = document.querySelector('canvas'),
 	ctx = canvas.getContext('2d');
@@ -65,7 +60,7 @@ var 	rSun = 0.1*H, //Radius of Sun
 function drawText(text, x, y, aligment){
 	ctx.font = "15px Verdana";
         ctx.fillStyle = "white";
-        ctx.textAlign = alignment;
+        ctx.textAlign = aligment;
         ctx.fillText(text, x, y); 
 }
 function drawCircle(x, y, radius, colour){
