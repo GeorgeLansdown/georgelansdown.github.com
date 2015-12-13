@@ -35,7 +35,7 @@ var 	rMars = 0.0003389*H,
 	xMars = 0, 
     	yMars = 0, 
     	aMars = 0, 
-    	orMars = 0.425*W;
+    	orMars = 0.3*H;
 
 //EARTH
 var 	rEarth = 0.0006371*H, //Radius of Earth
@@ -75,7 +75,7 @@ function drawCircle(x, y, radius, colour){
 
 //FUNCTIONS - DRAWING BODIES
 function drawSun(){
-	drawText("Sun", xSun, ySun-rSun-rMoon, "center");
+	drawText("Sun", xSun, ySun-rSun-10, "center");
 	drawCircle(xSun, ySun, rSun, "#FFFF00"); //Yellow
 }
 function drawMoon(){ 
@@ -92,7 +92,7 @@ function drawEarth(){
 	xEarth = Math.cos(aEarth*(Math.PI/180))*orEarth+(xSun); //Finds x coord for Earth using the formula cos(angle)*orbital radius + x origin. Features correction from radians to degrees.
   	yEarth = Math.sin(aEarth*(Math.PI/180))*orEarth+(ySun); //Finds y coord for Earth using the formula sin(angle)*orbital radius + y origin. Features correction from radians to degrees.
   	
-  	drawText("Earth", xEarth, yEarth-rEarth-rMoon, "center");
+  	drawText("Earth", xEarth, yEarth-rEarth-10, "center");
   	drawCircle(xEarth, yEarth, rEarth, "#0000FF");//Blue
 }
 function drawMars(){
@@ -101,7 +101,7 @@ function drawMars(){
 	xMars = Math.cos(aMars*(Math.PI/180))*orMars+(xSun); 
   	yMars = Math.sin(aMars*(Math.PI/180))*orMars+(ySun);
   	
-  	drawText("Mars", xMars, yMars, yMars-rMars, "center");
+  	drawText("Mars", xMars, yMars, yMars-rMars-10, "center");
   	drawCircle(xMars, yMars, rMars, "#C1440E");//Red/Brown
 }
 
