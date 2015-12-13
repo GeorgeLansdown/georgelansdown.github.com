@@ -20,14 +20,14 @@ h2 {
 
 //Setting canvas up
 var 	canvas = document.querySelector('canvas'),
-		ctx = canvas.getContext('2d');
+	ctx = canvas.getContext('2d');
 
 
 //Canvas size 
 ctx.canvas.width  = window.innerWidth;
 ctx.canvas.height = window.innerHeight;
-var W = canvas.width;
-var H = canvas.height;
+var 	W = canvas.width,
+	H = canvas.height;
     	
 //Earth Parameters, default radius = 6.378
 var 	rEarth = 0.01*H, //Radius of Earth
@@ -72,7 +72,7 @@ function drawMoon(){
 	xMoon = Math.cos(aMoon*(Math.PI/180))*orMoon+(xEarth); 
   	yMoon = Math.sin(aMoon*(Math.PI/180))*orMoon+(yEarth); 
   
-	drawCircle(xMoon, yMoon, rMoon, #888888") 
+	drawCircle(xMoon, yMoon, rMoon, #888888"); 
 }
 
 function drawEarth(){
@@ -81,17 +81,16 @@ function drawEarth(){
 	xEarth = Math.cos(aEarth*(Math.PI/180))*orEarth+(xSun); //Finds x coord for Earth using the formula cos(angle)*orbital radius + x origin. Features correction from radians to degrees.
   	yEarth = Math.sin(aEarth*(Math.PI/180))*orEarth+(ySun); //Finds y coord for Earth using the formula sin(angle)*orbital radius + y origin. Features correction from radians to degrees.
   	
-  	drawCircle(xEarth, yEarth, rEarth, "#0000FF")
+  	drawCircle(xEarth, yEarth, rEarth, "#0000FF");
 }
 
 //Ultimate Draw function
 function draw(){ //Drawing
 	ctx.clearRect(0, 0, W, H);
 
-	drawText("George Lansdown - George@Lansdown.me", 5, canvas.height-5)
+	drawText("George Lansdown - George@Lansdown.me", 5, canvas.height-5);
 
-
-	drawCircle(xSun, ySun, rSun, "#FFFF00") //Draws sun circle
+	drawCircle(xSun, ySun, rSun, "#FFFF00"); //Draws sun circle
   	drawEarth();
   	drawMoon();
 }
