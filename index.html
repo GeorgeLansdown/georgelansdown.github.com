@@ -40,12 +40,8 @@ var 	rMars = 0.004*H,
 var 	rEarth = 0.005*H, //Radius of Earth
 	xEarth = 0.75*W, //Starting locations, scale to size of window
     	yEarth = 0.5*H, 
-    	aEarth = 0; //0 as default, starting angle of earth's roation 
-if (H > W){
-	orEarth = 0.45*W; 
-} else {
-	orEarth = 0.45*H; 
-}
+    	aEarth = 0, //0 as default, starting angle of earth's roation 
+	orEarth = ;
 //MOON
 var 	orMoon = 4*rEarth,
 	rMoon = 0.5*rEarth, //Radius of Earth
@@ -104,7 +100,7 @@ function drawMars(){
 	xMars = Math.cos(aMars*(Math.PI/180))*orMars+(xSun); 
   	yMars = Math.sin(aMars*(Math.PI/180))*orMars+(ySun);
   	
-  	drawText("Mars", xMars, yMars, yMars-rMars-50, "center");
+  	drawText("Mars", xMars, yMars, yMars-rMars, "center");
   	drawCircle(xMars, yMars, rMars, "#C1440E");//Red/Brown
 }
 
