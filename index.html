@@ -114,7 +114,7 @@ function drawMars(){
   	drawCircle(xMars, yMars, (rMars/scaleFactor), "#C1440E");//Red/Brown
 }
 function drawJupiter(){
-	aJupiter += 0.30793387175*timeFactor;
+	aJupiter += 0.30793387175/timeFactor;
 	
 	xJupiter = Math.cos(aJupiter*(Math.PI/180))*(orJupiter/scaleFactor)+xSun; 
   	yJupiter = Math.sin(aJupiter*(Math.PI/180))*(orJupiter/scaleFactor)+ySun;
