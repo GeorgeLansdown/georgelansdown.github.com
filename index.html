@@ -113,7 +113,7 @@ function draw(){
 
 	drawText("George Lansdown - George@Lansdown.me", 0, H-5, "left");
 	drawText("Scale Factor: " + String(scaleFactor).substring(0,3), W, H-5, "right")
-	drawText("Time Factor: " + String(timeFactor).substring(0,3), W, H-20, "right")
+	drawText("Time Factor: " + String(1/timeFactor).substring(0,3), W, H-20, "right")
 	
 	drawSun();
   	drawEarth();
