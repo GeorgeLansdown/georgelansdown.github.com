@@ -87,6 +87,7 @@ function drawMoon(){
   	yMoon = Math.sin(aMoon*(Math.PI/180))*orMoon+(yEarth); 
   
 	drawCircle(xMoon, yMoon, rMoon, "#888888"); 
+	drawLabel(xMoon, yMoon, "Moon");
 }
 
 function drawEarth(){
@@ -96,6 +97,7 @@ function drawEarth(){
   	yEarth = Math.sin(aEarth*(Math.PI/180))*orEarth+(ySun); //Finds y coord for Earth using the formula sin(angle)*orbital radius + y origin. Features correction from radians to degrees.
   	
   	drawCircle(xEarth, yEarth, rEarth, "#0000FF");
+  	drawLabel(xEarth, yEarth, "Earth");
 }
 
 //Ultimate Draw function
