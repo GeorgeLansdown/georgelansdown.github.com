@@ -99,8 +99,8 @@ function drawEarth(){
 function drawMars(){
 	aMars += 0.6;
 	
-	xMars = Math.cos(aMars*(Math.PI/180))*orMars+(xSun); 
-  	yMars = Math.sin(aMars*(Math.PI/180))*orMars+(ySun);
+	xMars = Math.cos(aMars*(Math.PI/180))*(orMars*scaleFactor)+(xSun); 
+  	yMars = Math.sin(aMars*(Math.PI/180))*(orMars*scaleFactor)+(ySun);
   	
   	drawText("Mars", xMars, yMars, yMars-rMars*scaleFactor-20, "center");
   	drawCircle(xMars, yMars, rMars*scaleFactor, "#C1440E");//Red/Brown
