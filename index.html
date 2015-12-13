@@ -76,34 +76,46 @@ function drawCircle(x, y, radius, colour){
 
 //FUNCTIONS - DRAWING BODIES
 function drawSun(){
-	drawText("Sun", xSun, ySun-rSun*scaleFactor-10, "center");
-	drawCircle(xSun, ySun, rSun*scaleFactor, "#FFFF00"); //Yellow
+	drawText("Sun", xSun, ySun-rSun-10, "center");
+	drawCircle(xSun, ySun, rSun, "#FFFF00"); //Yellow
 }
 function drawMoon(){ 
   	aMoon += 3;
   
-	xMoon = Math.cos(aMoon*(Math.PI/180))*(orMoon*scaleFactor)+(xEarth); 
-  	yMoon = Math.sin(aMoon*(Math.PI/180))*(orMoon*scaleFactor)+(yEarth); 
+	xMoon = Math.cos(aMoon*(Math.PI/180))*orMoon+(xEarth); 
+  	yMoon = Math.sin(aMoon*(Math.PI/180))*orMoon+(yEarth); 
   
-	drawCircle(xMoon, yMoon, rMoon*scaleFactor, "#888888"); //Grey
+	drawCircle(xMoon, yMoon, rMoon, "#888888"); //Grey
 }
 function drawEarth(){
 	aEarth += 0.6; //Size of angle increment, one orbit per 10 seconds, 36 degrees a second, 0.6 per tick
   
-	xEarth = Math.cos(aEarth*(Math.PI/180))*(orEarth*scaleFactor)+(xSun); //Finds x coord for Earth using the formula cos(angle)*orbital radius + x origin. Features correction from radians to degrees.
-  	yEarth = Math.sin(aEarth*(Math.PI/180))*(orEarth*scaleFactor)+(ySun); //Finds y coord for Earth using the formula sin(angle)*orbital radius + y origin. Features correction from radians to degrees.
+	xEarth = Math.cos(aEarth*(Math.PI/180))*orEarth+(xSun); //Finds x coord for Earth using the formula cos(angle)*orbital radius + x origin. Features correction from radians to degrees.
+  	yEarth = Math.sin(aEarth*(Math.PI/180))*orEarth+(ySun); //Finds y coord for Earth using the formula sin(angle)*orbital radius + y origin. Features correction from radians to degrees.
   	
-  	drawText("Earth", xEarth, yEarth-rEarth*scaleFactor-10, "center");
-  	drawCircle(xEarth, yEarth, rEarth*scaleFactor, "#0000FF");//Blue
+  	drawText("Earth", xEarth, yEarth-rEarth-10, "center");
+  	drawCircle(xEarth, yEarth, rEarth, "#0000FF");//Blue
 }
 function drawMars(){
 	aMars += 0.6;
 	
-	xMars = Math.cos(aMars*(Math.PI/180))*(orMars*scaleFactor)+(xSun); 
-  	yMars = Math.sin(aMars*(Math.PI/180))*(orMars*scaleFactor)+(ySun);
+	xMars = Math.cos(aMars*(Math.PI/180))*orMars+(xSun); 
+  	yMars = Math.sin(aMars*(Math.PI/180))*orMars+(ySun);
   	
-  	drawText("Mars", xMars, yMars, yMars-rMars*scaleFactor-20, "center");
-  	drawCircle(xMars, yMars, rMars*scaleFactor, "#C1440E");//Red/Brown
+  	drawText("Mars", xMars, yMars, yMars-rMars-20, "center");
+  	drawCircle(xMars, yMars, rMars, "#C1440E");//Red/Brown
+}
+updateUI(){
+	rMars *= scaleFactor; 
+	orMars *= scaleFactor; 
+	
+	rSun *= scaleFactor; 
+	
+	rMoon *= scaleFactor; 
+	orMoon *= scaleFactor; 
+	
+	rEarth *= scaleFactor; 
+	orEarth *= scaleFactor; 
 }
 
 //ULTIMATE DRAW FUNCTION
@@ -112,17 +124,23 @@ function draw(){
 
 	drawText("George Lansdown - George@Lansdown.me", 0, H-5, "left");
 
+	updateUI();
+	
 	drawSun();
   	drawEarth();
   	drawMoon();
   	drawMars();
 }
 
-document.addEventListener('keydown', function(event) {
-		if(event.keyCode == 38) {
+document.addEventListener('keydown', function(cheese) {
+		if(cheese.keyCode == 38) { //up
 			scaleFactor += 0.1;
-		} else if(event.keyCode == 40) {
+		} else if(cheese.keyCode == 39) { //right
+			alert("Right was pressed")
+		} else if (cheese.keyCode == 40) { //down
 			scaleFactor -= 0.1;
+		} else if (cheese.keyCode == 37) { //left
+			alert("Left was pressed")
 		}
 });
 
