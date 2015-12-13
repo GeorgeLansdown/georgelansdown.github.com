@@ -60,14 +60,14 @@ function drawText(text, x, y){
         ctx.fillText(text, x, y); 
 }
 function drawCircle(x, y, radius, colour){
-	ctx.strokeStyle = "#00000";
+	ctx.strokeStyle = "#000000"; //Black
 	ctx.beginPath();
-	ctx.arc(x, y, radius, 0, 2*Math.PI); //Draws Earth Circle
-	ctx.fillStyle = colour; //blue
+	ctx.arc(x, y, radius, 0, 2*Math.PI);
+	ctx.fillStyle = colour;
   	ctx.fill();
 }
 function drawLabel(x, y, text){
-	ctx.strokeStyle = "#FFFFFF";
+	ctx.strokeStyle = "#FFFFFF"; //White
 	ctx.moveTo(x,y);
 	ctx.lineTo(x+100, y-100);
   	ctx.moveTo(x+100,y-100);
@@ -78,7 +78,7 @@ function drawLabel(x, y, text){
 }
 function drawSun(){
 	drawLabel(xSun, ySun, "Sun");
-	drawCircle(xSun, ySun, rSun, "#FFFF00"); //Draws sun circle
+	drawCircle(xSun, ySun, rSun, "#FFFF00"); //Yellow
 }
 function drawMoon(){ 
   	aMoon += 3;
@@ -86,8 +86,9 @@ function drawMoon(){
 	xMoon = Math.cos(aMoon*(Math.PI/180))*orMoon+(xEarth); 
   	yMoon = Math.sin(aMoon*(Math.PI/180))*orMoon+(yEarth); 
   
-	drawCircle(xMoon, yMoon, rMoon, "#888888"); 
-	drawLabel(xMoon, yMoon, "Moon");
+  
+  	drawLabel(xMoon, yMoon, "Moon");
+	drawCircle(xMoon, yMoon, rMoon, "#888888"); //Grey
 }
 
 function drawEarth(){
@@ -96,8 +97,8 @@ function drawEarth(){
 	xEarth = Math.cos(aEarth*(Math.PI/180))*orEarth+(xSun); //Finds x coord for Earth using the formula cos(angle)*orbital radius + x origin. Features correction from radians to degrees.
   	yEarth = Math.sin(aEarth*(Math.PI/180))*orEarth+(ySun); //Finds y coord for Earth using the formula sin(angle)*orbital radius + y origin. Features correction from radians to degrees.
   	
-  	drawCircle(xEarth, yEarth, rEarth, "#0000FF");
   	drawLabel(xEarth, yEarth, "Earth");
+  	drawCircle(xEarth, yEarth, rEarth, "#0000FF");//Blue
 }
 
 //Ultimate Draw function
