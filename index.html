@@ -112,8 +112,8 @@ function draw(){
 	ctx.clearRect(0, 0, W, H);
 
 	drawText("George Lansdown - George@Lansdown.me", 0, H-5, "left");
-	drawText("Scale Factor: " + scaleFactor, W, H-5, "right")
-	drawText("Time Factor: 1/" + timeFactor, W, H-20, "right")
+	drawText("Scale Factor: " + scaleFactor.substring(0,1), W, H-5, "right")
+	drawText("Time Factor: " + timeFactor.substring(0,1), W, H-20, "right")
 	
 	drawSun();
   	drawEarth();
