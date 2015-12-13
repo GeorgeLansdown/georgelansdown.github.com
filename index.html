@@ -30,9 +30,9 @@ var 	W = canvas.width,
     	
 //VARIABLES OF CELESRIAL BODIES  
 //MARS
-var 	rMars = 60, 
-	xMars = 0.85*W, 
-    	yMars = 0.5*H, 
+var 	rMars = 0.004*H, 
+	xMars = 0, 
+    	yMars = 0, 
     	aMars = 0, 
     	orMars = 0.425*W;
 
@@ -104,7 +104,7 @@ function drawMars(){
 	xMars = Math.cos(aMars*(Math.PI/180))*orMars+(xSun); 
   	yMars = Math.sin(aMars*(Math.PI/180))*orMars+(ySun);
   	
-  	drawText("Mars", xMars, yMars, yMars-rMars-20, "center");
+  	drawText("Mars", xMars, yMars, yMars-rMars-50, "center");
   	drawCircle(xMars, yMars, rMars, "#C1440E");//Red/Brown
 }
 
