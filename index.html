@@ -65,9 +65,19 @@ function drawCircle(x, y, radius, colour){
 	ctx.fillStyle = colour; //blue
   	ctx.fill();
 }
+function drawLabel(x, y, text){
+	ctx.strokeStyle = "#FFFFFF";
+	ctx.moveTo(x,y);
+	ctx.lineTo(x+100, y-100);
+  	ctx.moveTo(x+100,y-100);
+  	ctx.lineTo(x+100+(text.length*10), y-100);
+	ctx.stroke();
+  
+	drawText(text, x+100, y-100);
+}
 function drawSun(){
 	drawCircle(xSun, ySun, rSun, "#FFFF00"); //Draws sun circle
-	drawText("Sun", xSun, ySun);
+	drawLabel(xSun, ySun, "Sun");
 }
 function drawMoon(){ 
   	aMoon += 3;
