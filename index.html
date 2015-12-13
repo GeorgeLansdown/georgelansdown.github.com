@@ -19,7 +19,7 @@ h2 {
 //George Lansdown - 12/12/15
 
 //Setting canvas up
-var canvas = document.querySelector('canvas'),
+var 	canvas = document.querySelector('canvas'),
 		ctx = canvas.getContext('2d');
 
 
@@ -59,7 +59,7 @@ function drawText(text, x, y){
         ctx.textAlign = "left";
         ctx.fillText(text, x, y); 
 }
-function drawCircle(radius, x, y, colour){
+function drawCircle(x, y, radius, colour){
 	ctx.beginPath();
 	ctx.arc(x, y, radius, 0, 2*Math.PI); //Draws Earth Circle
 	ctx.fillStyle = colour; //blue
