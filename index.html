@@ -1,5 +1,6 @@
 <canvas id="myCanvas"></canvas>
 <style>
+/* CSS*/
 canvas { 
 	background: #000000; 
 }
@@ -8,28 +9,28 @@ html, body {
 	height: 100%;
 	margin: 0px;
 }
-h2 {
-	text-size:10px;
-	color:white;
-}
 </style>
 
-<script>
-//Sun Animation
-//George Lansdown - 12/12/15
 
-//Setting canvas up
+
+<script>
+//JAVASCRIPT
+
+//INITIALSING CANVAS
 var 	canvas = document.querySelector('canvas'),
 	ctx = canvas.getContext('2d');
 
 
-//Canvas size 
+
+//***VARIABLES***
 ctx.canvas.width  = window.innerWidth;
 ctx.canvas.height = window.innerHeight;
 var 	W = canvas.width,
 	H = canvas.height;
     	
-//Earth Parameters, default radius = 6.378
+    	
+//VARIABLES OF CELESRIAL BODIES    	
+//EARTH
 var 	rEarth = 0.01*H, //Radius of Earth
 	xEarth = 0.75*W, //Starting locations, scale to size of window
     	yEarth = 0.5*H, 
@@ -40,19 +41,23 @@ if (H > W){
 	orEarth = 0.3*H; //1,496,000 by default, orbital radius
 }
 
+//MOON
 var 	orMoon = 4*rEarth,
 	rMoon = 0.5*rEarth, //Radius of Earth
 	xMoon = xEarth+orMoon, //Starting locations, scale to size of window
     	yMoon = 400, 
     	aMoon = 0; //0 as default, starting angle of earth's roation
 
-//Sun Parameters, default radius = 695.450
+//SUN
 var 	rSun = 0.1*H, //Radius of Sun
 	xSun = 0.5*W, //Locations, scale to size of window
 	ySun = 0.5*H;
 
 
-//Drawing Functions
+
+
+
+//FUNCTIONS - DRAWING SHAPES
 function drawText(text, x, y){
 	ctx.font = "15px Verdana";
         ctx.fillStyle = "white";
@@ -65,6 +70,8 @@ function drawCircle(x, y, radius, colour){
 	ctx.fillStyle = colour;
   	ctx.fill();
 }
+
+//FUNCTIONS - DRAWING BODIES
 function drawSun(){
 	drawText("Sun", xSun, ySun-rSun-20);
 	drawCircle(xSun, ySun, rSun, "#FFFF00"); //Yellow
@@ -76,10 +83,9 @@ function drawMoon(){
   	yMoon = Math.sin(aMoon*(Math.PI/180))*orMoon+(yEarth); 
   
   
-  	drawText("Moon", xMoon, yMoon-rMoon-20);
+  	//drawText("Moon", xMoon, yMoon-rMoon-20);
 	drawCircle(xMoon, yMoon, rMoon, "#888888"); //Grey
 }
-
 function drawEarth(){
 	aEarth += 0.6; //Size of angle increment, one orbit per 10 seconds, 36 degrees a second, 0.6 per tick
   
@@ -90,7 +96,7 @@ function drawEarth(){
   	drawCircle(xEarth, yEarth, rEarth, "#0000FF");//Blue
 }
 
-//Ultimate Draw function
+//ULTIMATE DRAW FUNCTION
 function draw(){ //Drawing
 	ctx.clearRect(0, 0, W, H);
 
@@ -101,6 +107,6 @@ function draw(){ //Drawing
   	drawMoon();
 }
 
-//Run
-setInterval(draw, 1000/60);
+
+setInterval(draw, 1000/60); //FUNCTION TO BE REPEATED, FRAMERATE
 </script>
