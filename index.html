@@ -81,10 +81,7 @@ function drawCircle(x, y, radius, colour){
 
 //FUNCTIONS - DRAWING BODIES
 function drawSun(xOrigin, yOrigin){
-	aSun += 0;
-	
-	xSun = Math.cos(aMoon*(Math.PI/180))*(orSun/scaleFactor)+(xOrigin); 
-  	ySun = Math.sin(aMoon*(Math.PI/180))*(orSun/scaleFactor)+(yOrigin); 
+
   	
   	drawText("Sun", xSun, ySun-(rSun/scaleFactor)-10, "center");
 	drawCircle(xSun, ySun, (rSun/scaleFactor), "#FFFF00"); //Yellow
