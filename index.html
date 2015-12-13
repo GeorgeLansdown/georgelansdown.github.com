@@ -56,10 +56,8 @@ var 	orMoon = 0.00384,
 
 //SUN
 var 	rSun = 0.0696343*H, //Radius of Sun
-	xSun = 0.25*W, //Locations, scale to size of window
-	ySun = 0.25*H,
-	orSun = 500,
-	aSun = 0;
+	xSun = 0.5*W, //Locations, scale to size of window
+	ySun = 0.5*H,
 
 
 
@@ -80,13 +78,11 @@ function drawCircle(x, y, radius, colour){
 }
 
 //FUNCTIONS - DRAWING BODIES
-function drawSun(xOrigin, yOrigin){
-
-  	
-  	drawText("Sun", xSun, ySun-(rSun/scaleFactor)-10, "center");
+function drawSun(){
+	drawText("Sun", xSun, ySun-(rSun/scaleFactor)-10, "center");
 	drawCircle(xSun, ySun, (rSun/scaleFactor), "#FFFF00"); //Yellow
 }
-function drawMoon(xOrigin, yOrigin){ 
+function drawMoon(){ 
   	aMoon += 13.538/timeFactor;
   
 	xMoon = Math.cos(aMoon*(Math.PI/180))*(orMoon/scaleFactor)+(xEarth); 
@@ -94,7 +90,7 @@ function drawMoon(xOrigin, yOrigin){
   
 	drawCircle(xMoon, yMoon, (rMoon/scaleFactor), "#888888"); //Grey
 }
-function drawEarth(xOrigin, yOrigin){
+function drawEarth(){
 	aEarth += 3.65256/timeFactor; //Size of angle increment, one orbit per 10 seconds, 36 degrees a second, 0.6 per tick
   
 	xEarth = Math.cos(aEarth*(Math.PI/180))*(orEarth/scaleFactor)+(xFocus); //Finds x coord for Earth using the formula cos(angle)*orbital radius + x origin. Features correction from radians to degrees.
