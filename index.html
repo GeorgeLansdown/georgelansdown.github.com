@@ -29,8 +29,6 @@ var 	W = canvas.width,
 	H = canvas.height;
 var 	scaleFactor = 5,
 	timeFactor = 5;
-var 	xFocus = xSun,
-	yFocus = ySun;
     	
     	
 //VARIABLES OF CELESRIAL BODIES  
@@ -93,8 +91,8 @@ function drawMoon(){
 function drawEarth(){
 	aEarth += 3.65256/timeFactor; //Size of angle increment, one orbit per 10 seconds, 36 degrees a second, 0.6 per tick
   
-	xEarth = Math.cos(aEarth*(Math.PI/180))*(orEarth/scaleFactor)+(xFocus); //Finds x coord for Earth using the formula cos(angle)*orbital radius + x origin. Features correction from radians to degrees.
-  	yEarth = Math.sin(aEarth*(Math.PI/180))*(orEarth/scaleFactor)+(yFocus); //Finds y coord for Earth using the formula sin(angle)*orbital radius + y origin. Features correction from radians to degrees.
+	xEarth = Math.cos(aEarth*(Math.PI/180))*(orEarth/scaleFactor)+(xSun); //Finds x coord for Earth using the formula cos(angle)*orbital radius + x origin. Features correction from radians to degrees.
+  	yEarth = Math.sin(aEarth*(Math.PI/180))*(orEarth/scaleFactor)+(ySun); //Finds y coord for Earth using the formula sin(angle)*orbital radius + y origin. Features correction from radians to degrees.
   	
   	drawText("Earth", xEarth, yEarth-(rEarth/scaleFactor)-10, "center");
   	drawCircle(xEarth, yEarth, (rEarth/scaleFactor), "#0000FF");//Blue
@@ -102,8 +100,8 @@ function drawEarth(){
 function drawMars(){
 	aMars += 1.9428/timeFactor;
 	
-	xMars = Math.cos(aMars*(Math.PI/180))*(orMars/scaleFactor)+(xFocus); 
-  	yMars = Math.sin(aMars*(Math.PI/180))*(orMars/scaleFactor)+(yFocus);
+	xMars = Math.cos(aMars*(Math.PI/180))*(orMars/scaleFactor)+(xSun); 
+  	yMars = Math.sin(aMars*(Math.PI/180))*(orMars/scaleFactor)+(ySun);
   	
   	drawText("Mars", xMars, yMars, yMars-(rMars/scaleFactor)-20, "center");
   	drawCircle(xMars, yMars, (rMars/scaleFactor), "#C1440E");//Red/Brown
