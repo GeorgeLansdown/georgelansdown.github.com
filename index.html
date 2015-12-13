@@ -48,10 +48,11 @@ var 	rMars = 0.0003389*H,
 
 //EARTH
 var 	rEarth = 0.0006371*H, //Radius of Earth
-	xEarth = 0.75*W, //Starting locations, scale to size of window
+	xEarth = 0.5*W, //Starting locations, scale to size of window
     	yEarth = 0.5*H, 
     	aEarth = 0, //0 as default, starting angle of earth's roation 
 	orEarth = 1.49*H;
+	
 //MOON
 var 	orMoon = 0.00384,
 	rMoon = 0.0001737*H, //Radius of Earth
@@ -62,7 +63,9 @@ var 	orMoon = 0.00384,
 //SUN
 var 	rSun = 0.0696343*H, //Radius of Sun
 	xSun = 0.5*W, //Locations, scale to size of window
-	ySun = 0.5*H;
+	ySun = 0.5*H,
+	orSun = 1.49*H,
+	aSun = 0;
 
 
 
@@ -84,6 +87,12 @@ function drawCircle(x, y, radius, colour){
 
 //FUNCTIONS - DRAWING BODIES
 function drawSun(){
+	aSun += 3.65256/timeFactor; //Size of angle increment, one orbit per 10 seconds, 36 degrees a second, 0.6 per tick
+  
+	xSun = Math.cos(aSun*(Math.PI/180))*(orSun/scaleFactor)+xEarth; //Finds x coord for Earth using the formula cos(angle)*orbital radius + x origin. Features correction from radians to degrees.
+  	ySun = Math.sin(aSun*(Math.PI/180))*(orSun/scaleFactor)+xEarth; //Finds y coord for Earth using the formula sin(angle)*orbital radius + y origin. Features correction from radians to degrees.
+  	
+	
 	drawText("Sun", xSun, ySun-(rSun/scaleFactor)-10, "center");
 	drawCircle(xSun, ySun, (rSun/scaleFactor), "#FFFF00"); //Yellow
 }
@@ -96,11 +105,6 @@ function drawMoon(){
 	drawCircle(xMoon, yMoon, (rMoon/scaleFactor), "#888888"); //Grey
 }
 function drawEarth(){
-	aEarth += 3.65256/timeFactor; //Size of angle increment, one orbit per 10 seconds, 36 degrees a second, 0.6 per tick
-  
-	xEarth = Math.cos(aEarth*(Math.PI/180))*(orEarth/scaleFactor)+xSun; //Finds x coord for Earth using the formula cos(angle)*orbital radius + x origin. Features correction from radians to degrees.
-  	yEarth = Math.sin(aEarth*(Math.PI/180))*(orEarth/scaleFactor)+ySun; //Finds y coord for Earth using the formula sin(angle)*orbital radius + y origin. Features correction from radians to degrees.
-  	
   	drawText("Earth", xEarth, yEarth-(rEarth/scaleFactor)-10, "center");
   	drawCircle(xEarth, yEarth, (rEarth/scaleFactor), "#0000FF");//Blue
 }
