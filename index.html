@@ -92,7 +92,7 @@ function drawEarth(){
 	xEarth = Math.cos(aEarth*(Math.PI/180))*orEarth+(xSun); //Finds x coord for Earth using the formula cos(angle)*orbital radius + x origin. Features correction from radians to degrees.
   	yEarth = Math.sin(aEarth*(Math.PI/180))*orEarth+(ySun); //Finds y coord for Earth using the formula sin(angle)*orbital radius + y origin. Features correction from radians to degrees.
   	
-  	drawText("Earth", xEarth, yEarth-rEarth-20);
+  	drawText("Earth", xEarth, yEarth-rEarth-rMoon);
   	drawCircle(xEarth, yEarth, rEarth, "#0000FF");//Blue
 }
 
