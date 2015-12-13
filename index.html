@@ -32,6 +32,13 @@ var 	scaleFactor = 5,
     	
     	
 //VARIABLES OF CELESRIAL BODIES  
+//JUPITER
+var 	rJupiter = 0.0069911*H,
+	xJupiter = 0,
+	yJupiter = 0,
+	aJupiter = 0,
+	orJupiter = 7.78*H;
+	
 //MARS
 var 	rMars = 0.0003389*H, 
 	xMars = 0, 
@@ -106,6 +113,15 @@ function drawMars(){
   	drawText("Mars", xMars, yMars, yMars-(rMars/scaleFactor)-20, "center");
   	drawCircle(xMars, yMars, (rMars/scaleFactor), "#C1440E");//Red/Brown
 }
+function drawJupiter(){
+	aJupiter = 0.30793387175*timeFactor;
+	
+	xJupiter = Math.cos(aJupiter*(Math.PI/180))*(orJupiter/scaleFactor)+xSun; 
+  	yJupiter = Math.sin(aJupiter*(Math.PI/180))*(orJupiter/scaleFactor)+ySun;
+  	
+  	drawText("Jupiter", xJupiter, yJupiter, yJupiter-(rJupiter/scaleFactor)-20, "center");
+  	drawCircle(xJupiter, yJupiter, (rJupiter/scaleFactor), "#D8CA9D");//Brown
+}
 
 //ULTIMATE DRAW FUNCTION
 function draw(){
@@ -119,6 +135,7 @@ function draw(){
   	drawEarth();
   	drawMoon();
   	drawMars();
+  	drawJupiter();
 }
 
 document.addEventListener('keydown', function(event) {
