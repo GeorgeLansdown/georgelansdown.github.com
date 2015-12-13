@@ -65,7 +65,10 @@ function drawCircle(x, y, radius, colour){
 	ctx.fillStyle = colour; //blue
   	ctx.fill();
 }
-
+function drawSun(){
+	drawCircle(xSun, ySun, rSun, "#FFFF00"); //Draws sun circle
+	drawText("Sun", xSun, ySun);
+}
 function drawMoon(){ 
   	aMoon += 3;
   
@@ -90,7 +93,7 @@ function draw(){ //Drawing
 
 	drawText("George Lansdown - George@Lansdown.me", 5, canvas.height-5);
 
-	drawCircle(xSun, ySun, rSun, "#FFFF00"); //Draws sun circle
+	drawSun();
   	drawEarth();
   	drawMoon();
 }
