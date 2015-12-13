@@ -77,25 +77,25 @@ function drawCircle(x, y, radius, colour){
 
 //FUNCTIONS - DRAWING BODIES
 function drawSun(){
-	drawText("Sun", xSun, ySun-rSun*scaleFactor-10, "center");
-	drawCircle(xSun, ySun, rSun*scaleFactor, "#FFFF00"); //Yellow
+	drawText("Sun", xSun, ySun-(rSun/scaleFactor)-10, "center");
+	drawCircle(xSun, ySun, (rSun/scaleFactor), "#FFFF00"); //Yellow
 }
 function drawMoon(){ 
   	aMoon += 13.538/timeFactor;
   
-	xMoon = Math.cos(aMoon*(Math.PI/180))*orMoon*scaleFactor+(xEarth); 
-  	yMoon = Math.sin(aMoon*(Math.PI/180))*orMoon*scaleFactor+(yEarth); 
+	xMoon = Math.cos(aMoon*(Math.PI/180))*(orMoon/scaleFactor)+(xEarth); 
+  	yMoon = Math.sin(aMoon*(Math.PI/180))*(orMoon/scaleFactor)+(yEarth); 
   
-	drawCircle(xMoon, yMoon, rMoon*scaleFactor, "#888888"); //Grey
+	drawCircle(xMoon, yMoon, (rMoon/scaleFactor), "#888888"); //Grey
 }
 function drawEarth(){
 	aEarth += 3.65256/timeFactor; //Size of angle increment, one orbit per 10 seconds, 36 degrees a second, 0.6 per tick
   
-	xEarth = Math.cos(aEarth*(Math.PI/180))*orEarth*scaleFactor+(xSun); //Finds x coord for Earth using the formula cos(angle)*orbital radius + x origin. Features correction from radians to degrees.
-  	yEarth = Math.sin(aEarth*(Math.PI/180))*orEarth*scaleFactor+(ySun); //Finds y coord for Earth using the formula sin(angle)*orbital radius + y origin. Features correction from radians to degrees.
+	xEarth = Math.cos(aEarth*(Math.PI/180))*(orEarth/scaleFactor)+(xSun); //Finds x coord for Earth using the formula cos(angle)*orbital radius + x origin. Features correction from radians to degrees.
+  	yEarth = Math.sin(aEarth*(Math.PI/180))*(orEarth/scaleFactor)+(ySun); //Finds y coord for Earth using the formula sin(angle)*orbital radius + y origin. Features correction from radians to degrees.
   	
-  	drawText("Earth", xEarth, yEarth-rEarth*scaleFactor-10, "center");
-  	drawCircle(xEarth, yEarth, rEarth*scaleFactor, "#0000FF");//Blue
+  	drawText("Earth", xEarth, yEarth-(rEarth/scaleFactor)-10, "center");
+  	drawCircle(xEarth, yEarth, (rEarth/scaleFactor), "#0000FF");//Blue
 }
 function drawMars(){
 	aMars += 1.9428/timeFactor;
