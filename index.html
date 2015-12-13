@@ -72,12 +72,13 @@ function drawLabel(x, y, text){
   	ctx.moveTo(x+100,y-100);
   	ctx.lineTo(x+100+(text.length*10), y-100);
 	ctx.stroke();
-  
+  	ctx.strokeStyle = "#000000";
+  	
 	drawText(text, x+100, y-100);
 }
 function drawSun(){
-	drawCircle(xSun, ySun, rSun, "#FFFF00"); //Draws sun circle
 	drawLabel(xSun, ySun, "Sun");
+	drawCircle(xSun, ySun, rSun, "#FFFF00"); //Draws sun circle
 }
 function drawMoon(){ 
   	aMoon += 3;
