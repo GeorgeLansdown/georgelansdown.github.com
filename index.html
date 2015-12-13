@@ -27,7 +27,8 @@ ctx.canvas.width  = window.innerWidth;
 ctx.canvas.height = window.innerHeight;
 var 	W = canvas.width,
 	H = canvas.height;
-var 	scaleFactor = 0.2;
+var 	scaleFactor = 0.2,
+	tiemeFactor = 1;
     	
     	
 //VARIABLES OF CELESRIAL BODIES  
@@ -80,7 +81,7 @@ function drawSun(){
 	drawCircle(xSun, ySun, rSun*scaleFactor, "#FFFF00"); //Yellow
 }
 function drawMoon(){ 
-  	aMoon += 13.538/4;
+  	aMoon += 13.538/timeFactor;
   
 	xMoon = Math.cos(aMoon*(Math.PI/180))*orMoon*scaleFactor+(xEarth); 
   	yMoon = Math.sin(aMoon*(Math.PI/180))*orMoon*scaleFactor+(yEarth); 
@@ -88,7 +89,7 @@ function drawMoon(){
 	drawCircle(xMoon, yMoon, rMoon*scaleFactor, "#888888"); //Grey
 }
 function drawEarth(){
-	aEarth += 3.65256/4; //Size of angle increment, one orbit per 10 seconds, 36 degrees a second, 0.6 per tick
+	aEarth += 3.65256/timeFactor; //Size of angle increment, one orbit per 10 seconds, 36 degrees a second, 0.6 per tick
   
 	xEarth = Math.cos(aEarth*(Math.PI/180))*orEarth*scaleFactor+(xSun); //Finds x coord for Earth using the formula cos(angle)*orbital radius + x origin. Features correction from radians to degrees.
   	yEarth = Math.sin(aEarth*(Math.PI/180))*orEarth*scaleFactor+(ySun); //Finds y coord for Earth using the formula sin(angle)*orbital radius + y origin. Features correction from radians to degrees.
@@ -97,7 +98,7 @@ function drawEarth(){
   	drawCircle(xEarth, yEarth, rEarth*scaleFactor, "#0000FF");//Blue
 }
 function drawMars(){
-	aMars += 1.9428/4;
+	aMars += 1.9428/timeFactor;
 	
 	xMars = Math.cos(aMars*(Math.PI/180))*orMars*scaleFactor+(xSun); 
   	yMars = Math.sin(aMars*(Math.PI/180))*orMars*scaleFactor+(ySun);
@@ -122,11 +123,11 @@ document.addEventListener('keydown', function(cheese) {
 		if(cheese.keyCode == 38) { //up
 			scaleFactor += 0.1;
 		} else if(cheese.keyCode == 39) { //right
-			alert("Right was pressed")
+			timeFactor += 0.1;
 		} else if (cheese.keyCode == 40) { //down
 			scaleFactor -= 0.1;
 		} else if (cheese.keyCode == 37) { //left
-			alert("Left was pressed")
+			timeFactor += 0.1;
 		}
 });
 
