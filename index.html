@@ -28,7 +28,14 @@ var 	W = canvas.width,
 	H = canvas.height;
     	
     	
-//VARIABLES OF CELESRIAL BODIES    	
+//VARIABLES OF CELESRIAL BODIES  
+//MARS
+var 	rMars = 60, 
+	xMars = 0.85*W, 
+    	yMars = 0.5*H, 
+    	aMars = 0, 
+    	orMars = 0.425*W;
+
 //EARTH
 var 	rEarth = 0.005*H, //Radius of Earth
 	xEarth = 0.75*W, //Starting locations, scale to size of window
@@ -39,9 +46,6 @@ if (H > W){
 } else {
 	orEarth = 0.45*H; 
 }
-
-
-
 //MOON
 var 	orMoon = 4*rEarth,
 	rMoon = 0.5*rEarth, //Radius of Earth
@@ -94,16 +98,26 @@ function drawEarth(){
   	drawText("Earth", xEarth, yEarth-rEarth-rMoon, "center");
   	drawCircle(xEarth, yEarth, rEarth, "#0000FF");//Blue
 }
+function drawMars(){
+	aMars += 5;
+	
+	xMars = Math.cos(aMars*(Math.PI/180))*orMars+(xSun); 
+  	yMars = Math.sin(aMars*(Math.PI/180))*orMars+(ySun);
+  	
+  	drawText("Mars", xMars, yMars, yMars-rMars-20, "center");
+  	drawCircle(xMars, yMars, rMars, "#C1440E");//Red/Brown
+}
 
 //ULTIMATE DRAW FUNCTION
 function draw(){
 	ctx.clearRect(0, 0, W, H);
 
-	drawText("George Lansdown- George@Lansdown.me", 0, H-5, "left");
+	drawText("George Lansdown - George@Lansdown.me", 0, H-5, "left");
 
 	drawSun();
   	drawEarth();
   	drawMoon();
+  	drawMars();
 }
 
 
