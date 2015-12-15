@@ -90,7 +90,7 @@ function drawSun(){
 	aSun += 3.65256/timeFactor; //Size of angle increment, one orbit per 10 seconds, 36 degrees a second, 0.6 per tick
   
 	xSun = Math.cos(aSun*(Math.PI/180))*(orSun/scaleFactor)+xEarth; //Finds x coord for Earth using the formula cos(angle)*orbital radius + x origin. Features correction from radians to degrees.
-  	ySun = Math.sin(aSun*(Math.PI/180))*(orSun/scaleFactor)+xEarth; //Finds y coord for Earth using the formula sin(angle)*orbital radius + y origin. Features correction from radians to degrees.
+  	ySun = Math.sin(aSun*(Math.PI/180))*(orSun/scaleFactor)+yEarth; //Finds y coord for Earth using the formula sin(angle)*orbital radius + y origin. Features correction from radians to degrees.
   	
 	
 	drawText("Sun", xSun, ySun-(rSun/scaleFactor)-10, "center");
@@ -105,6 +105,12 @@ function drawMoon(){
 	drawCircle(xMoon, yMoon, (rMoon/scaleFactor), "#888888"); //Grey
 }
 function drawEarth(){
+	//aEarth += 3.65256/timeFactor; //Size of angle increment, one orbit per 10 seconds, 36 degrees a second, 0.6 per tick
+  
+	//xEarth = Math.cos(aEarth*(Math.PI/180))*(orEarth/scaleFactor)+xEarth; //Finds x coord for Earth using the formula cos(angle)*orbital radius + x origin. Features correction from radians to degrees.
+  	//yEarth = Math.sin(aEarth*(Math.PI/180))*(orEarth/scaleFactor)+xSun; //Finds y coord for Earth using the formula sin(angle)*orbital radius + y origin. Features correction from radians to degrees.
+  		
+
   	drawText("Earth", xEarth, yEarth-(rEarth/scaleFactor)-10, "center");
   	drawCircle(xEarth, yEarth, (rEarth/scaleFactor), "#0000FF");//Blue
 }
