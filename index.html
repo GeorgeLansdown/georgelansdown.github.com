@@ -94,8 +94,8 @@ function drawSun(){
 		xSun = Math.cos(aSun*(Math.PI/180))*(orSun/scaleFactor)+xEarth; //Finds x coord for Earth using the formula cos(angle)*orbital radius + x origin. Features correction from radians to degrees.
   		ySun = Math.sin(aSun*(Math.PI/180))*(orSun/scaleFactor)+yEarth; //Finds y coord for Earth using the formula sin(angle)*orbital radius + y origin. Features correction from radians to degrees.
 	} if (Focus == "Mars"){
-		xEarth = Math.cos(aSun*(Math.PI/180))*(orSun/scaleFactor)+xMars; //Finds x coord for Earth using the formula cos(angle)*orbital radius + x origin. Features correction from radians to degrees.
-  		yEarth = Math.sin(aSun*(Math.PI/180))*(orSun/scaleFactor)+yMars; //Finds y coord for Earth using the formula sin(angle)*orbital radius + y origin. Features correction from radians to degrees.
+		xSun = Math.cos(aSun*(Math.PI/180))*(orSun/scaleFactor)+xMars; //Finds x coord for Earth using the formula cos(angle)*orbital radius + x origin. Features correction from radians to degrees.
+  		ySun = Math.sin(aSun*(Math.PI/180))*(orSun/scaleFactor)+yMars; //Finds y coord for Earth using the formula sin(angle)*orbital radius + y origin. Features correction from radians to degrees.
 	}
 	
 	drawText("Sun", xSun, ySun-(rSun/scaleFactor)-10, "center");
