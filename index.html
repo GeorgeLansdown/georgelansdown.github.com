@@ -90,7 +90,7 @@ function drawCircle(x, y, radius, colour){
 function drawSun(){
 	aSun += 3.65256/timeFactor; //Size of angle increment, one orbit per 10 seconds, 36 degrees a second, 0.6 per tick
 	
-	if (xFocus != "Sun"){
+	if (Focus != "Sun"){
 		xSun = Math.cos(aSun*(Math.PI/180))*(orSun/scaleFactor)+xEarth; //Finds x coord for Earth using the formula cos(angle)*orbital radius + x origin. Features correction from radians to degrees.
   		ySun = Math.sin(aSun*(Math.PI/180))*(orSun/scaleFactor)+yEarth; //Finds y coord for Earth using the formula sin(angle)*orbital radius + y origin. Features correction from radians to degrees.
 	}
@@ -109,7 +109,7 @@ function drawMoon(){
 function drawEarth(){
 	aEarth += 3.65256/timeFactor; //Size of angle increment, one orbit per 10 seconds, 36 degrees a second, 0.6 per tick
 	
-	if (xFocus != "Earth"){
+	if (Focus != "Earth"){
 		xEarth = Math.cos(aEarth*(Math.PI/180))*(orEarth/scaleFactor)+xSun; //Finds x coord for Earth using the formula cos(angle)*orbital radius + x origin. Features correction from radians to degrees.
   		yEarth = Math.sin(aEarth*(Math.PI/180))*(orEarth/scaleFactor)+ySun; //Finds y coord for Earth using the formula sin(angle)*orbital radius + y origin. Features correction from radians to degrees.
 	}
@@ -160,11 +160,11 @@ document.addEventListener('keydown', function(event) {
 			scaleFactor += 0.1;
 		} else if (event.keyCode == 37) { //left
 			timeFactor += 0.1;
-		} else if (event.keyCode == 49) {
+		} else if (event.keyCode == 49) {  //1
 			xSun = 0.5*W,
 			ySun = 0.5*H;
 			Focus = "Sun";
-		} else if (event.keyCode == 50) {
+		} else if (event.keyCode == 50) { //2
 			xEarth = 0.5*W,
 			yEarth = 0.5*H;
 			Focus = "Earth";
