@@ -29,7 +29,7 @@ var 	W = canvas.width,
 	H = canvas.height;
 var 	scaleFactor = 5,
 	timeFactor = 5;
-var 	Focus = "Sun";
+var 	Focus = "Mars";
     	
     	
 //VARIABLES OF CELESRIAL BODIES  
@@ -93,12 +93,12 @@ function drawCircle(x, y, radius, colour){
 //FUNCTIONS - DRAWING BODIES
 function drawSun(){
 	if (Focus == "Earth"){
-		aSun = aEarth; //Size of angle increment, one orbit per 10 seconds, 36 degrees a second, 0.6 per tick
+		aSun += acEarth; //Size of angle increment, one orbit per 10 seconds, 36 degrees a second, 0.6 per tick
 		
 		xSun = Math.cos(aSun*(Math.PI/180))*(orSun/scaleFactor)+xEarth; //Finds x coord for Earth using the formula cos(angle)*orbital radius + x origin. Features correction from radians to degrees.
   		ySun = Math.sin(aSun*(Math.PI/180))*(orSun/scaleFactor)+yEarth; //Finds y coord for Earth using the formula sin(angle)*orbital radius + y origin. Features correction from radians to degrees.
 	} if (Focus == "Mars"){
-		aSun = aMars; //Size of angle increment, one orbit per 10 seconds, 36 degrees a second, 0.6 per tick
+		aSun += acMars; //Size of angle increment, one orbit per 10 seconds, 36 degrees a second, 0.6 per tick
 		
 		xSun = Math.cos(aSun*(Math.PI/180))*(orSun/scaleFactor)+xMars; //Finds x coord for Earth using the formula cos(angle)*orbital radius + x origin. Features correction from radians to degrees.
   		ySun = Math.sin(aSun*(Math.PI/180))*(orSun/scaleFactor)+yMars; //Finds y coord for Earth using the formula sin(angle)*orbital radius + y origin. Features correction from radians to degrees.
