@@ -29,6 +29,7 @@ var 	W = canvas.width,
 	H = canvas.height;
 var 	scaleFactor = 5,
 	timeFactor = 5;
+var 	Focus = "Sun";
     	
     	
 //VARIABLES OF CELESRIAL BODIES  
@@ -88,10 +89,11 @@ function drawCircle(x, y, radius, colour){
 //FUNCTIONS - DRAWING BODIES
 function drawSun(){
 	aSun += 3.65256/timeFactor; //Size of angle increment, one orbit per 10 seconds, 36 degrees a second, 0.6 per tick
-  
-	xSun = Math.cos(aSun*(Math.PI/180))*(orSun/scaleFactor)+xEarth; //Finds x coord for Earth using the formula cos(angle)*orbital radius + x origin. Features correction from radians to degrees.
-  	ySun = Math.sin(aSun*(Math.PI/180))*(orSun/scaleFactor)+yEarth; //Finds y coord for Earth using the formula sin(angle)*orbital radius + y origin. Features correction from radians to degrees.
-  	
+	
+	if (xFocus != "Sun"){
+		xSun = Math.cos(aSun*(Math.PI/180))*(orSun/scaleFactor)+xEarth; //Finds x coord for Earth using the formula cos(angle)*orbital radius + x origin. Features correction from radians to degrees.
+  		ySun = Math.sin(aSun*(Math.PI/180))*(orSun/scaleFactor)+yEarth; //Finds y coord for Earth using the formula sin(angle)*orbital radius + y origin. Features correction from radians to degrees.
+	}
 	
 	drawText("Sun", xSun, ySun-(rSun/scaleFactor)-10, "center");
 	drawCircle(xSun, ySun, (rSun/scaleFactor), "#FFFF00"); //Yellow
@@ -105,12 +107,13 @@ function drawMoon(){
 	drawCircle(xMoon, yMoon, (rMoon/scaleFactor), "#888888"); //Grey
 }
 function drawEarth(){
-	//aEarth += 3.65256/timeFactor; //Size of angle increment, one orbit per 10 seconds, 36 degrees a second, 0.6 per tick
-  
-	//xEarth = Math.cos(aEarth*(Math.PI/180))*(orEarth/scaleFactor)+xEarth; //Finds x coord for Earth using the formula cos(angle)*orbital radius + x origin. Features correction from radians to degrees.
-  	//yEarth = Math.sin(aEarth*(Math.PI/180))*(orEarth/scaleFactor)+xSun; //Finds y coord for Earth using the formula sin(angle)*orbital radius + y origin. Features correction from radians to degrees.
-  		
-
+	aEarth += 3.65256/timeFactor; //Size of angle increment, one orbit per 10 seconds, 36 degrees a second, 0.6 per tick
+	
+	if (xFocus != "Earth"){
+		xEarth = Math.cos(aEarth*(Math.PI/180))*(orEarth/scaleFactor)+xSun; //Finds x coord for Earth using the formula cos(angle)*orbital radius + x origin. Features correction from radians to degrees.
+  		yEarth = Math.sin(aEarth*(Math.PI/180))*(orEarth/scaleFactor)+ySun; //Finds y coord for Earth using the formula sin(angle)*orbital radius + y origin. Features correction from radians to degrees.
+	}
+	
   	drawText("Earth", xEarth, yEarth-(rEarth/scaleFactor)-10, "center");
   	drawCircle(xEarth, yEarth, (rEarth/scaleFactor), "#0000FF");//Blue
 }
@@ -157,7 +160,12 @@ document.addEventListener('keydown', function(event) {
 			scaleFactor += 0.1;
 		} else if (event.keyCode == 37) { //left
 			timeFactor += 0.1;
+		} else if (event.keyCode == 49) {
+			Focus = "Sun";
+		} else if (event.keyCode == 50) {
+			Focus = "Earth";
 		}
+	
 });
 
 
