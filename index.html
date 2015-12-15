@@ -90,9 +90,12 @@ function drawCircle(x, y, radius, colour){
 function drawSun(){
 	aSun += 3.65256/timeFactor; //Size of angle increment, one orbit per 10 seconds, 36 degrees a second, 0.6 per tick
 	
-	if (Focus != "Sun"){
+	if (Focus == "Earth"){
 		xSun = Math.cos(aSun*(Math.PI/180))*(orSun/scaleFactor)+xEarth; //Finds x coord for Earth using the formula cos(angle)*orbital radius + x origin. Features correction from radians to degrees.
   		ySun = Math.sin(aSun*(Math.PI/180))*(orSun/scaleFactor)+yEarth; //Finds y coord for Earth using the formula sin(angle)*orbital radius + y origin. Features correction from radians to degrees.
+	} if (Focus == "Mars"){
+		xEarth = Math.cos(aSun*(Math.PI/180))*(orSun/scaleFactor)+xMars; //Finds x coord for Earth using the formula cos(angle)*orbital radius + x origin. Features correction from radians to degrees.
+  		yEarth = Math.sin(aSun*(Math.PI/180))*(orSun/scaleFactor)+yMars; //Finds y coord for Earth using the formula sin(angle)*orbital radius + y origin. Features correction from radians to degrees.
 	}
 	
 	drawText("Sun", xSun, ySun-(rSun/scaleFactor)-10, "center");
@@ -109,7 +112,10 @@ function drawMoon(){
 function drawEarth(){
 	aEarth += 3.65256/timeFactor; //Size of angle increment, one orbit per 10 seconds, 36 degrees a second, 0.6 per tick
 	
-	if (Focus != "Earth"){
+	if (Focus == "Mars"){
+		xEarth = Math.cos(aEarth*(Math.PI/180))*(orEarth/scaleFactor)+xMars; //Finds x coord for Earth using the formula cos(angle)*orbital radius + x origin. Features correction from radians to degrees.
+  		yEarth = Math.sin(aEarth*(Math.PI/180))*(orEarth/scaleFactor)+yMars; //Finds y coord for Earth using the formula sin(angle)*orbital radius + y origin. Features correction from radians to degrees.
+	} else if (Focus == "Sun"){
 		xEarth = Math.cos(aEarth*(Math.PI/180))*(orEarth/scaleFactor)+xSun; //Finds x coord for Earth using the formula cos(angle)*orbital radius + x origin. Features correction from radians to degrees.
   		yEarth = Math.sin(aEarth*(Math.PI/180))*(orEarth/scaleFactor)+ySun; //Finds y coord for Earth using the formula sin(angle)*orbital radius + y origin. Features correction from radians to degrees.
 	}
@@ -120,8 +126,13 @@ function drawEarth(){
 function drawMars(){
 	aMars += 1.9428/timeFactor;
 	
-	xMars = Math.cos(aMars*(Math.PI/180))*(orMars/scaleFactor)+xSun; 
-  	yMars = Math.sin(aMars*(Math.PI/180))*(orMars/scaleFactor)+ySun;
+	if (Focus == "Earth"){
+		xMars = Math.cos(aMars*(Math.PI/180))*(orMars/scaleFactor)+xEarth; 
+  		yMars = Math.sin(aMars*(Math.PI/180))*(orMars/scaleFactor)+yEarth;
+	} else if (Focus == "Sun"){
+		xMars = Math.cos(aMars*(Math.PI/180))*(orMars/scaleFactor)+xSun; 
+  		yMars = Math.sin(aMars*(Math.PI/180))*(orMars/scaleFactor)+ySun;
+	}
   	
   	drawText("Mars", xMars, yMars, yMars-(rMars/scaleFactor)-20, "center");
   	drawCircle(xMars, yMars, (rMars/scaleFactor), "#C1440E");//Red/Brown
@@ -168,6 +179,10 @@ document.addEventListener('keydown', function(event) {
 			xEarth = 0.5*W,
 			yEarth = 0.5*H;
 			Focus = "Earth";
+		} else if (event.keyCode == 51) { //3
+			xMars = 0.5*W,
+			yMars = 0.5*H;
+			Focus = "Mars";
 		}
 	
 });
