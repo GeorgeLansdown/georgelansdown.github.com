@@ -58,10 +58,10 @@ var 	rEarth = 0.0006371*H, //Radius of Earth
 	acEarth = 3.65265;
 	
 //MOON
-var 	orMoon = 0.00384+rEarth,
+var 	orMoon = 0.00384*H,
 	rMoon = 0.0001737*H, //Radius of Earth
 	xMoon = xEarth+orMoon, //Starting locations, scale to size of window
-    	yMoon = 400, 
+    	yMoon = yEarth, 
     	aMoon = 0, //0 as default, starting angle of earth's roation
     	acMoon = 13.538;
 
