@@ -140,7 +140,7 @@ function drawMars(){
   		yMars = Math.sin(aMars*(Math.PI/180))*(orMars*scaleFactor)+ySun;
 	}
   	
-  	drawText("Mars", xMars, yMars, yMars-(rMars*scaleFactor)-20, "center");
+  	drawText("Mars", xMars, yMars-(rMars*scaleFactor)-10, "center");
   	drawCircle(xMars, yMars, (rMars*scaleFactor), "#C1440E");//Red/Brown
 }
 function drawJupiter(){
