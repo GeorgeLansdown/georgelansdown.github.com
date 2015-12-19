@@ -184,11 +184,12 @@ document.addEventListener('keydown', function(event) {
 		} else if (event.keyCode == 49) {  //1
 			xSun = 0.5*W,
 			ySun = 0.5*H;
+			aEarth = 0.5*aSun;
 			Focus = "Sun";
 		} else if (event.keyCode == 50) { //2
 			xEarth = 0.5*W,
 			yEarth = 0.5*H;
-			aSun = aEarth/2;
+			aSun = 0.5*aEarth;
 			Focus = "Earth";
 		} else if (event.keyCode == 51) { //3
 			xMars = 0.5*W,
