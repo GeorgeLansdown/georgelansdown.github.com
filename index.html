@@ -17,6 +17,21 @@ html, body {
 <script>
 //JAVASCRIPT
 //INITIALSING CANVAS
+class Body {
+	constructor(x, y, radius, orbit_radius, angle_change, angle){
+		this.x = x,
+		this.y = y,
+		this.radius = radius,
+		this.orbital_radius = orbital_radius,
+		this.angle_change = angle_change,
+		this.angle = angle;
+	}	
+}
+
+var Earth = Body(0,0,0,0,0,0);
+alert(Earth.radius)
+
+
 var 	canvas = document.querySelector('canvas'),
 	ctx = canvas.getContext('2d');
 
