@@ -20,11 +20,32 @@ var 	canvas = document.querySelector('canvas'),
 	
 ctx.canvas.width  = window.innerWidth;
 ctx.canvas.height = window.innerHeight;
+
 var 	W = canvas.width,
 	H = canvas.height;
+	
+var 	x = 0.5*W,
+	y = 0.5*H;
+	
+var 	rMoon = 2*H,
+	xMoon = 0.5*W,
+	yMoon = H;
+	
+	
+function drawMoon(){ 
+	drawCircle(xMoon, yMoon, rMoon, "#888888"); //Grey
+}
+	
+	
+	
+	
+	
+	
+	
 
 function draw(){
 	ctx.clearRect(0, 0, W, H);
+	drawMoon();
 }
 
 
