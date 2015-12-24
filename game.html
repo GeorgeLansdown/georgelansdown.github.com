@@ -29,23 +29,20 @@ var 	x = 0.5*W,
 	
 var 	rMoon = 2*H,
 	xMoon = 0.5*W,
-	yMoon = H;
-	
-	
-function drawMoon(){ 
-	drawCircle(xMoon, yMoon, rMoon, "#888888"); //Grey
-}
-	
-	
-	
-	
-	
+	yMoon = H,
+	cMoon = "#888888"; //Grey
 	
 	
 
 function draw(){
 	ctx.clearRect(0, 0, W, H);
-	drawMoon();
+	drawCircle(xMoon, yMoon, rMoon, cMoon); //Moon
+}
+function drawCircle(x, y, radius, colour){
+	ctx.beginPath();
+	ctx.arc(x, y, radius, 0, 2*Math.PI);
+	ctx.fillStyle = colour;
+  	ctx.fill();
 }
 
 
