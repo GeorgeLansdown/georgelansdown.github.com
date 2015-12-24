@@ -24,8 +24,8 @@ ctx.canvas.height = window.innerHeight;
 var 	W = canvas.width,
 	H = canvas.height;
 	
-var 	x = 0.5*W,
-	y = 0.5*H;
+var 	xShip = 0.5*W,
+	yShip = 0.5*H;
 	
 var 	rMoon = H,
 	xMoon = 0.5*W,
@@ -37,7 +37,7 @@ var 	rMoon = H,
 function draw(){
 	ctx.clearRect(0, 0, W, H);
 	drawCircle(xMoon, yMoon, rMoon, cMoon); //Moon
-	drawCirlce(x, y, 30, "	#FFFF00")
+	drawCirlce(xShip, yShip, 30, "	#FFFF00");
 }
 function drawCircle(x, y, radius, colour){
 	ctx.beginPath();
