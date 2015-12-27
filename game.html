@@ -27,35 +27,27 @@ var 	W = canvas.width,
 var 	xShip = 0.5*W,
 	yShip = 0.5*H-30,
 	angleShip = 270,
-	vxShip = 0,
-	vyShip = 0;
+	magnitudeShip = 0;
 	
 var 	rMoon = H,
 	xMoon = 0.5*W,
 	yMoon = 1.5*H,
 	cMoon = "#888888"; //Grey
-	
-var 	rEarth = 0.0006371*H, //Radius of Earth
-	xEarth = 0.5*W, //Starting locations, scale to size of window
-    	yEarth = 0.5*H, 
-    	aEarth = 0, //0 as default, starting angle of earth's roation 
-	orEarth = 1.49*H,
-	acEarth = 3.65265;
-	
+
+function drawCircle(x, y, radius, colour){
+	ctx.beginPath();
+	ctx.arc(x, y, radius, 0, 2*Math.PI);
+	ctx.fillStyle = colour;
+  	ctx.fill();
+}
 function drawShip(){
+	vxShip = magnitudeShip*Math.cos(angleShip*(Math.PI/180));
+	vyShip = magnitudeShip*Math.sin(angleShip*(Math.PI/180));
+	
 	xShip += vxShip;
 	yShip += vyShip;
 	
 	drawCircle(xShip, yShip, 30, "	#FFFF00");
-}
-
-function drawEarth(){
-	aEarth += acEarth; //Size of angle increment, one orbit per 10 seconds, 36 degrees a second, 0.6 per tick
-	
-	xEarth = Math.cos(aEarth*(Math.PI/180))*orEarth+xMoon; //Finds x coord for Earth using the formula cos(angle)*orbital radius + x origin. Features correction from radians to degrees.  		
-	yEarth = Math.sin(aEarth*(Math.PI/180))*orEarth+yMoon; //Finds y coord for Earth using the formula sin(angle)*orbital radius + y origin. Features correction from radians to degrees.
-
-  	drawCircle(xEarth, yEarth, rEarth, "#0000FF");//Blue
 }
 
 function draw(){
@@ -63,12 +55,6 @@ function draw(){
 	drawCircle(xMoon, yMoon, rMoon, cMoon); //Moon
 	drawShip();
 	drawEarth();
-}
-function drawCircle(x, y, radius, colour){
-	ctx.beginPath();
-	ctx.arc(x, y, radius, 0, 2*Math.PI);
-	ctx.fillStyle = colour;
-  	ctx.fill();
 }
 
 
