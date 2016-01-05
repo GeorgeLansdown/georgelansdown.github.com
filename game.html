@@ -26,6 +26,8 @@ var 	W = canvas.width,
 	
 var 	xShip = 0.5*W,
 	yShip = 0.5*H-30,
+	vxShip = 0,
+	vyShip = 0,
 	angleShip = 270,
 	magnitudeShip = 0;
 	
@@ -44,7 +46,7 @@ function drawShip(){
 	xShip += vxShip;
 	yShip += vyShip;
 	
-	drawCircle(xShip, yShip, 30, "	#FFFF00");
+	drawCircle(xShip, yShip, 30, "#FFFF00");
 }
 
 function draw(){
