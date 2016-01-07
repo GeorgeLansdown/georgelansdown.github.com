@@ -32,7 +32,7 @@ var 	xShip = 0.5*W,
 	magnitudeShip = 0;
 	
 var 	rMoon = H,
-	xMoon = 0.5*W,
+	xMoon = W,
 	yMoon = 1.5*H,
 	cMoon = "#888888"; //Grey
 
@@ -45,8 +45,8 @@ function drawCircle(x, y, radius, colour){
 function drawShip(){
 	PlanetAngle = (Math.PI/180)*Math.atan((yMoon - yShip)/(xMoon - xShip));
 	
-	xShip += Math.cos(270*(Math.PI/180))*0.25;
-	yShip += Math.sin(270*(Math.PI/180))*0.25;
+	xShip += Math.cos(PlanetAngle*(Math.PI/180))*0.25;
+	yShip += Math.sin(PlanetAngle*(Math.PI/180))*0.25;
 	
 	xShip += vxShip;
 	yShip += vyShip;
