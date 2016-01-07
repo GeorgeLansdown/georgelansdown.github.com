@@ -45,8 +45,8 @@ function drawCircle(x, y, radius, colour){
 function drawShip(){
 	PlanetAngle = (Math.PI/180)*Math.atan((yMoon - yShip)/(xMoon - xShip));
 	
-	vxShip += Math.cos(PlanetAngle*(Math.PI/180));
-	vyShip += Math.sin(PlanetAngle*(Math.PI/180));
+	xShip += Math.cos(PlanetAngle*(Math.PI/180));
+	yShip += Math.sin(PlanetAngle*(Math.PI/180));
 	
 	xShip += vxShip;
 	yShip += vyShip;
