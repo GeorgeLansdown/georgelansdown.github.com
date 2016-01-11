@@ -117,7 +117,7 @@ function drawMoon(){
 	xMoon = Math.cos(aMoon*(Math.PI/180))*(orMoon+scaleFactor)+xEarth; 
   	yMoon = Math.sin(aMoon*(Math.PI/180))*(orMoon+scaleFactor)+yEarth; 
   
-	drawCircle(xMoon, yMoon, (rMoon*scaleFactor), "#888888"); //Grey
+	drawCircle(xMoon, yMoon, (rMoon+scaleFactor), "#888888"); //Grey
 }
 function drawEarth(){
 	aEarth += acEarth/timeFactor; //Size of angle increment, one orbit per 10 seconds, 36 degrees a second, 0.6 per tick
