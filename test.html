@@ -48,18 +48,17 @@ var body = function(x, y, radius, orbitalradius, angle, anglechange, name, colou
         this.anglechange = anglechange, 
         this.name = name, 
         this.colour = colour;
+};
 
-        function draw(){
-            ctx.font = "15px Verdana";
-            ctx.fillStyle = "white";
-            ctx.textAlign = "center";
-            ctx.fillText(this.name, this.x, (this.y - 15));
-            ctx.beginPath();
-	    ctx.arc(this.x, this.y, this.radius, 0, 2*Math.PI);
-	    ctx.fillStyle = this.colour;
-  	    ctx.fill();         
-
-        
+body.prototype.draw = function(){
+        ctx.font = "15px Verdana";
+        ctx.fillStyle = "white";
+        ctx.textAlign = "center";
+        ctx.fillText(this.name, this.x, (this.y - 15));
+        ctx.beginPath();
+	ctx.arc(this.x, this.y, this.radius, 0, 2*Math.PI);
+	ctx.fillStyle = this.colour;
+  	ctx.fill();         
 };
 
 
