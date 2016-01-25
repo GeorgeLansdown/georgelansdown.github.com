@@ -51,8 +51,8 @@ var body = function(x, y, radius, orbitalradius, angle, anglechange, name, colou
         function draw(){
             ctx.font = "15px Verdana";
             ctx.fillStyle = "white";
-            ctx.textAlign = aligment;
-            ctx.fillText(this.name, this.x, this.y-15);
+            ctx.textAlign = center;
+            ctx.fillText(this.name, this.x, (this.y - 15));
             ctx.beginPath();
 	    ctx.arc(this.x, this.y, this.radius, 0, 2*Math.PI);
 	    ctx.fillStyle = this.colour;
@@ -106,7 +106,11 @@ function drawJupiter(){
 //ULTIMATE DRAW FUNCTION
 function draw(){
 	ctx.clearRect(0, 0, W, H);
-	drawText("George Lansdown - George@Lansdown.me", 0, H-5, "left");
+	
+	ctx.font = "15px Verdana";
+        ctx.fillStyle = "white";
+        ctx.textAlign = Left;
+        ctx.fillText("George Lansdown - George@Lansdown.Me", 0, H - 15);
 	
 	Sun.draw();
   	drawEarth();
