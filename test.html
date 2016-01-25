@@ -62,7 +62,10 @@ var 	rSun = 0.05*H, //Radius of Sun
 	aSun = 0;
 
 var Earth = new body(0.5*H, 0.5*W, 0.015*H, 0.3*H, 0, 3.65, "Earth", "#0000FF");
-var Moon = new body(xEarth
+var Moon = new body(Earth.x, Earth.y, 2*Earth.radius, 0, 13.5, "Moon", "#888888");
+var Mars = new body(0, 0, 0.01*H, 0.25*H, 0, 1.94,  "Mars", "#C1440E") 
+var Jupiter = new body(0, 0, 0.02*H, 0.5*H, 0, 0.3, "Jupiter", "#D8CA9D");
+var Sun = new body(0.5*W, 0.5*H, 0.05*H, 0, 0, 0, "Sun", "#FFFF00"); 
 
 
 
@@ -89,56 +92,55 @@ var body = function(x, y, radius, orbitalradius, angle, anglechange, name, colou
 
         
 };
+
+
+
 //FUNCTIONS - DRAWING BODIES
-function drawSun(){
-	drawText("Sun", xSun, ySun-rSun-10, "center");
-	drawCircle(xSun, ySun, rSun, "#FFFF00"); //Yellow
-}
 function drawMoon(){ 
-  	aMoon += acMoon;
+  	Moon.angle += Moon.anglechange;
   
-	xMoon = Math.cos(aMoon*(Math.PI/180))*(orMoon)+xEarth; 
-  	yMoon = Math.sin(aMoon*(Math.PI/180))*(orMoon)+yEarth; 
+	Moon.x = Math.cos(Moon.angle*(Math.PI/180))*(Moon.orbitalradius)+Earth.x; 
+  	Moon.y = Math.sin(Moon.angle*(Math.PI/180))*(Moon.orbitalradius)+Earth.y; 
   
-	drawCircle(xMoon, yMoon, rMoon, "#888888"); //Grey
-}
+	Moon.draw();
+
+};
 function drawEarth(){
-	aEarth += acEarth; //Size of angle increment, one orbit per 10 seconds, 36 degrees a second, 0.6 per tick
+	Earth.angle += Earth.anglechange;
 	
 
-	xEarth = Math.cos(aEarth*(Math.PI/180))*(orEarth)+xSun; //Finds x coord for Earth using the formula cos(angle)*orbital radius + x origin. Features correction from radians to degrees.
-  	yEarth = Math.sin(aEarth*(Math.PI/180))*(orEarth)+ySun; //Finds y coord for Earth using the formula sin(angle)*orbital radius + y origin. Features correction from radians to degrees.
-	
-	
-  	drawText("Earth", xEarth, yEarth-rEarth-10, "center");
-  	drawCircle(xEarth, yEarth, rEarth, );//Blue
-}
+	Earth.x = Math.cos(Earth.angle*(Math.PI/180))*(Earth.orbitalradius)+Sun.y;
+  	Earth.y = Math.sin(Earth.angle*(Math.PI/180))*(Earth.orbitalradius)+Sun.y;
+
+        Earth.draw();
+};
+
 function drawMars(){
-	aMars += acMars;
+	Mars.angle += Mars.anglechange;
 	
 	
-	xMars = Math.cos(aMars*(Math.PI/180))*(orMars)+xSun; 
-  	yMars = Math.sin(aMars*(Math.PI/180))*(orMars)+ySun;
+	Mars.x = Math.cos(Mars.angle*(Math.PI/180))*(Mars.orbitalradius)+Sun.x; 
+  	Mars.y = Math.sin(Mars.angle*(Math.PI/180))*(Mars.orbitalradius)+Sun.y;
 	
   	
-  	drawText("Mars", xMars, yMars-rMars-10, "center");
-  	drawCircle(xMars, yMars, rMars, "#C1440E");//Red/Brown
-}
+  	Mars.draw();
+};
+
 function drawJupiter(){
-	aJupiter += acJupiter;
+	Jupiter.angle += Jupiter.anglechange;
 	
-	xJupiter = Math.cos(aJupiter*(Math.PI/180))*(orJupiter)+xSun; 
-  	yJupiter = Math.sin(aJupiter*(Math.PI/180))*(orJupiter)+ySun;
+	Jupiter.x = Math.cos(Jupiter.angle*(Math.PI/180))*(Jupiter.orbitalradius)+Sun.x; 
+  	Jupiter.y = Math.sin(Jupiter.angle*(Math.PI/180))*(Jupiter.orbitalradius)+Sun.y;
   	
-  	drawText("Jupiter", xJupiter, yJupiter, yJupiter-rJupiter-20, "center");
-  	drawCircle(xJupiter, yJupiter, rJupiter, "#D8CA9D");//Brown
-}
+        Jupiter.draw();
+};
+
 //ULTIMATE DRAW FUNCTION
 function draw(){
 	ctx.clearRect(0, 0, W, H);
 	drawText("George Lansdown - George@Lansdown.me", 0, H-5, "left");
 	
-	drawSun();
+	Sun.draw();
   	drawEarth();
   	drawMoon();
   	drawMars();
