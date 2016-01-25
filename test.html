@@ -39,7 +39,7 @@ body.prototype.draw = function(){
         ctx.font = "15px Verdana";
         ctx.fillStyle = "white";
         ctx.textAlign = "center";
-        ctx.fillText(this.name, this.x, (this.y - 15));
+        ctx.fillText(this.name, this.x, (this.y - 20));
         ctx.beginPath();
 	ctx.arc(this.x, this.y, this.radius, 0, 2*Math.PI);
 	ctx.fillStyle = this.colour;
@@ -47,13 +47,13 @@ body.prototype.draw = function(){
 };    	
 
 
-var Earth = new body(0.5*H, 0.5*W, 0.015*H, 0.3*H, 0, 3.65, "Earth", "#0000FF");
+var Earth = new body(0.5*H, 0.5*W, 0.015*H, 0.3*H, 0, 0.365, "Earth", "#0000FF");
 
-var Moon = new body(Earth.x, Earth.y, 0.01*H, 2*Earth.radius, 0, 13.5, "Moon", "#888888");
+var Moon = new body(Earth.x, Earth.y, 0.01*H, 2*Earth.radius, 0, 1.35, "Moon", "#888888");
 
-var Mars = new body(0, 0, 0.01*H, 0.25*H, 0, 1.94, "Mars", "#C1440E");
+var Mars = new body(0, 0, 0.01*H, 0.25*H, 0, 0.194, "Mars", "#C1440E");
 
-var Jupiter = new body(0, 0, 0.02*H, 0.5*H, 0, 0.3, "Jupiter", "#D8CA9D");
+var Jupiter = new body(0, 0, 0.02*H, 0.5*H, 0, 0.03, "Jupiter", "#D8CA9D");
 
 var Sun = new body(0.5*W, 0.5*H, 0.05*H, 0, 0, 0, "Sun", "#FFFF00"); 
 
