@@ -23,48 +23,16 @@ var 	W = canvas.width,
 	H = canvas.height;
 
     	
-    	
-//VARIABLES OF CELESRIAL BODIES  
-//JUPITER
-var 	rJupiter = 0.02*H,
-	xJupiter = 0,
-	yJupiter = 0,
-	aJupiter = 0,
-	orJupiter = 0.5*H, //Orbit radius
-	acJupiter =  0.30793387175; //Angle change per second
-	
-//MARS
-var 	rMars = 0.01*H, 
-	xMars = 0, 
-    	yMars = 0, 
-    	aMars = 0, 
-    	orMars = 0.25*H,
-    	acMars = 1.9428;
-//EARTH
-var 	rEarth = 0.015*H, //Radius of Earth
-	xEarth = 0.5*W, //Starting locations, scale to size of window
-    	yEarth = 0.5*H, 
-    	aEarth = 0, //0 as default, starting angle of earth's roation 
-	orEarth = 0.3*H,
-	acEarth = 3.65265;
-	
-//MOON
-var 	orMoon = 2*rEarth,
-	rMoon = 0.005*H, //Radius of Earth
-	xMoon = xEarth+orMoon, //Starting locations, scale to size of window
-    	yMoon = yEarth, 
-    	aMoon = 0, //0 as default, starting angle of earth's roation
-    	acMoon = 13.538;
-//SUN
-var 	rSun = 0.05*H, //Radius of Sun
-	xSun = 0.5*W, //Locations, scale to size of window
-	ySun = 0.5*H,
-	aSun = 0;
+
 
 var Earth = new body(0.5*H, 0.5*W, 0.015*H, 0.3*H, 0, 3.65, "Earth", "#0000FF");
+
 var Moon = new body(Earth.x, Earth.y, 2*Earth.radius, 0, 13.5, "Moon", "#888888");
-var Mars = new body(0, 0, 0.01*H, 0.25*H, 0, 1.94,  "Mars", "#C1440E") 
+
+var Mars = new body(0, 0, 0.01*H, 0.25*H, 0, 1.94,  "Mars", "#C1440E");
+
 var Jupiter = new body(0, 0, 0.02*H, 0.5*H, 0, 0.3, "Jupiter", "#D8CA9D");
+
 var Sun = new body(0.5*W, 0.5*H, 0.05*H, 0, 0, 0, "Sun", "#FFFF00"); 
 
 
