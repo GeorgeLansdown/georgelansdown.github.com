@@ -12,17 +12,6 @@ html, body {
 }
 </style>
 <script>
-var body = function(x, y){
-	this.x = x,
-	this.y = y;
-	console.log(x);
-	console.log(y);
-};
-
-var Earth = new body(10, 11);
-
-
-
 //JAVASCRIPT
 //INITIALSING CANVAS
 var 	canvas = document.querySelector('canvas'),
@@ -71,20 +60,35 @@ var 	rSun = 0.05*H, //Radius of Sun
 	xSun = 0.5*W, //Locations, scale to size of window
 	ySun = 0.5*H,
 	aSun = 0;
-	
-//FUNCTIONS - DRAWING SHAPES
-function drawText(text, x, y, aligment){
-	ctx.font = "15px Verdana";
-        ctx.fillStyle = "white";
-        ctx.textAlign = aligment;
-        ctx.fillText(text, x, y); 
-}
-function drawCircle(x, y, radius, colour){
-	ctx.beginPath();
-	ctx.arc(x, y, radius, 0, 2*Math.PI);
-	ctx.fillStyle = colour;
-  	ctx.fill();
-}
+
+var Earth = new body(0.5*H, 0.5*W, 0.015*H, 0.3*H, 0, 3.65, "Earth", "#0000FF");
+var Moon = new body(xEarth
+
+
+
+var body = function(x, y, radius, orbitalradius, angle, anglechange, name, colour){
+	this.x = x,
+	this.y = y, 
+        this.radius = radius, 
+        this.orbitalradius = orbital radius, 
+        this.radius = radius, 
+        this.angle = 0,
+        this.anglechange = anglechange, 
+        this.name = name, 
+        this.colour = colour;
+
+        function draw(){
+            ctx.font = "15px Verdana";
+            ctx.fillStyle = "white";
+            ctx.textAlign = aligment;
+            ctx.fillText(this.name, this.x, this.y-15);
+            ctx.beginPath();
+	    ctx.arc(this.x, this.y, this.radius, 0, 2*Math.PI);
+	    ctx.fillStyle = this.colour;
+  	    ctx.fill();         
+
+        
+};
 //FUNCTIONS - DRAWING BODIES
 function drawSun(){
 	drawText("Sun", xSun, ySun-rSun-10, "center");
@@ -107,7 +111,7 @@ function drawEarth(){
 	
 	
   	drawText("Earth", xEarth, yEarth-rEarth-10, "center");
-  	drawCircle(xEarth, yEarth, rEarth, "#0000FF");//Blue
+  	drawCircle(xEarth, yEarth, rEarth, );//Blue
 }
 function drawMars(){
 	aMars += acMars;
