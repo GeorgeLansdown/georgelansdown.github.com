@@ -52,7 +52,7 @@ moon.prototype.draw = function(){
 };
 
 
-var planet = function(x, y, radius, orbitalradius, angle, anglechange, orbiting, name, colour){
+var planet = function(x, y, radius, orbitalradius, angle, anglechange, name, colour){
 	this.x = x,
 	this.y = y, 
         this.radius = radius, 
@@ -67,7 +67,7 @@ planet.prototype.draw = function(){
        this.angle += this.anglechange;
   
 	this.x = Math.cos(this.angle*(Math.PI/180))*(this.orbitalradius); 
-  	this.y = Math.sin(this.angle*(Math.PI/180))*(this.orbitalradius) ;
+  	this.y = Math.sin(this.angle*(Math.PI/180))*(this.orbitalradius);
 
         ctx.font = "15px Verdana";
         ctx.fillStyle = "white";
