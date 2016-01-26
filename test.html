@@ -55,7 +55,7 @@ body.prototype.draw = function(){
 	}
 };    
 
-var Sun = new body(0.5*W, 0.5*H, 0.05*H, 0, 0, 0, "Star", "null", "Sun", "#FFFF00"); 
+var Sun = new body(0, 0, 0.05*H, 0, 0, 0, "Star", "null", "Sun", "#FFFF00"); 
 var Earth = new body(0, 0, 0.015*H, 0.3*H, 0, 0.365, "Planet", Sun, "Earth", "#0000FF");
 var Moon = new body(0, 0, 0.01*H, 2*Earth.radius, 0, 1.35, "Moon", Earth, "Moon", "#888888");
 var Mars = new body(0, 0, 0.01*H, 0.25*H, 0, 0.194, "Planet", Sun, "Mars", "#C1440E");
