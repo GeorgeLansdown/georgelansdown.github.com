@@ -52,7 +52,7 @@ body.prototype.draw = function(){
 	} else {
 		this.x = Math.cos(this.angle*(Math.PI/180))*(this.orbitalradius);
 		this.y = Math.sin(this.angle*(Math.PI/180))*(this.orbitalradius);
-	{
+	}
 };    	
 var Earth = new body(0, 0, 0.015*H, 0.3*H, 0, 0.365, "Planet", "null", "Earth", "#0000FF");
 var Moon = new body(0, 0, 0.01*H, 2*Earth.radius, 0, 1.35, "Moon", Earth, "Moon", "#888888");
