@@ -35,34 +35,6 @@ var moon = function(x, y, radius, orbitalradius, angle, anglechange, orbiting, n
         this.name = name, 
         this.colour = colour;
 };
-
-planet.prototype.draw = function(){
-       this.angle += this.anglechange;
-  
-	this.x = Math.cos(this.angle*(Math.PI/180))*(this.orbitalradius); 
-  	this.y = Math.sin(this.angle*(Math.PI/180))*(this.orbitalradius) ;
-
-        ctx.font = "15px Verdana";
-        ctx.fillStyle = "white";
-        ctx.textAlign = "center";
-        ctx.fillText(this.name, this.x, this.y-this.radius-15);
-        ctx.beginPath();
-	ctx.arc(this.x, this.y, this.radius, 0, 2*Math.PI);
-	ctx.fillStyle = this.colour;
-  	ctx.fill();         
-};
-var planet = function(x, y, radius, orbitalradius, angle, anglechange, orbiting, name, colour){
-	this.x = x,
-	this.y = y, 
-        this.radius = radius, 
-        this.orbitalradius = orbitalradius, 
-        this.radius = radius, 
-        this.angle = 0,
-        this.anglechange = anglechange,
-        this.name = name, 
-        this.colour = colour;
-};
-
 moon.prototype.draw = function(){
        this.angle += this.anglechange;
   
@@ -78,6 +50,35 @@ moon.prototype.draw = function(){
 	ctx.fillStyle = this.colour;
   	ctx.fill();         
 };
+
+
+var planet = function(x, y, radius, orbitalradius, angle, anglechange, orbiting, name, colour){
+	this.x = x,
+	this.y = y, 
+        this.radius = radius, 
+        this.orbitalradius = orbitalradius, 
+        this.radius = radius, 
+        this.angle = 0,
+        this.anglechange = anglechange,
+        this.name = name, 
+        this.colour = colour;
+};
+planet.prototype.draw = function(){
+       this.angle += this.anglechange;
+  
+	this.x = Math.cos(this.angle*(Math.PI/180))*(this.orbitalradius); 
+  	this.y = Math.sin(this.angle*(Math.PI/180))*(this.orbitalradius) ;
+
+        ctx.font = "15px Verdana";
+        ctx.fillStyle = "white";
+        ctx.textAlign = "center";
+        ctx.fillText(this.name, this.x, this.y-this.radius-15);
+        ctx.beginPath();
+	ctx.arc(this.x, this.y, this.radius, 0, 2*Math.PI);
+	ctx.fillStyle = this.colour;
+  	ctx.fill();         
+};
+
 
 var Sun = new planet(0.5*W, 0.5*H, 0.05*H, 0, 0, 0, "Sun", "#FFFF00"); 
 
@@ -100,10 +101,10 @@ function draw(){
         ctx.fillText("George Lansdown - George@Lansdown.me", 0, H-5);
 	
 	Sun.draw();
-  	drawEarth();
-  	drawMoon();
-  	drawMars();
-  	drawJupiter();
+  	Earth.draw();
+  	Moon.draw();
+  	Mars.draw();
+  	Jupiter.draw();
 };
 
 setInterval(draw, 1000/60); //FUNCTION TO BE REPEATED, FRAMERATE
