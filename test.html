@@ -23,7 +23,7 @@ ctx.canvas.height = window.innerHeight;
 var 	W = canvas.width,
 	H = canvas.height;
 
-var body = function(x, y, radius, orbitalradius, angle, anglechange, name, colour){
+var body = function(x, y, radius, orbitalradius, angle, anglechange, orbiting, name, colour){
 	this.x = x,
 	this.y = y, 
         this.radius = radius, 
@@ -31,6 +31,7 @@ var body = function(x, y, radius, orbitalradius, angle, anglechange, name, colou
         this.radius = radius, 
         this.angle = 0,
         this.anglechange = anglechange, 
+        this.orbiting = orbiting;
         this.name = name, 
         this.colour = colour;
 };
@@ -46,16 +47,16 @@ body.prototype.draw = function(){
   	ctx.fill();         
 };    	
 
+var Sun = new body(0.5*W, 0.5*H, 0.05*H, 0, 0, 0, 0, "Sun", "#FFFF00"); 
 
-var Earth = new body(0, 0, 0.015*H, 0.3*H, 0, 0.365, "Earth", "#0000FF");
+var Earth = new body(0, 0, 0.015*H, 0.3*H, 0, 0.365, Sun "Earth", "#0000FF");
 
-var Moon = new body(Earth.x, Earth.y, 0.01*H, 2*Earth.radius, 0, 1.35, "Moon", "#888888");
+var Moon = new body(0, 0, 0.01*H, 0.03*H, 0, 1.35, Earth "Moon", "#888888");
 
-var Mars = new body(0, 0, 0.01*H, 0.25*H, 0, 0.194, "Mars", "#C1440E");
+var Mars = new body(0, 0, 0.01*H, 0.25*H, 0, 0.194, Sun "Mars", "#C1440E");
 
-var Jupiter = new body(0, 0, 0.02*H, 0.5*H, 0, 0.03, "Jupiter", "#D8CA9D");
+var Jupiter = new body(0, 0, 0.02*H, 0.5*H, 0, 0.03, Sun, "Jupiter", "#D8CA9D");
 
-var Sun = new body(0.5*W, 0.5*H, 0.05*H, 0, 0, 0, "Sun", "#FFFF00"); 
 
 
 //FUNCTIONS - DRAWING BODIES
