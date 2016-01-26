@@ -47,8 +47,8 @@ body.prototype.draw = function(){
   	this.angle += this.anglechange;
 	
 	if (this.type = "Moon"){
-		this.x = Math.cos(this.angle*(Math.PI/180))*(this.orbitalradius)+orbiting.x;
-		this.y = Math.sin(this.angle*(Math.PI/180))*(this.orbitalradius)+orbiting.y;
+		this.x = Math.cos(this.angle*(Math.PI/180))*(this.orbitalradius)+this.orbiting.x;
+		this.y = Math.sin(this.angle*(Math.PI/180))*(this.orbitalradius)+this.orbiting.y;
 	} else {
 		this.x = Math.cos(this.angle*(Math.PI/180))*(this.orbitalradius);
 		this.y = Math.sin(this.angle*(Math.PI/180))*(this.orbitalradius);
