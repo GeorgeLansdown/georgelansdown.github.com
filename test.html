@@ -53,10 +53,10 @@ body.prototype.draw = function(){
 };    
 
 var Sun = new body(0.5*W, 0.5*H, 0.05*H, 0, 0, 0, "Star", "null", "Sun", "#FFFF00"); 
-var Earth = new body(0, 0, 0.015*H, 0.3*H, 0, 0.027, "Planet", Sun, "Earth", "#0000FF");
-var Moon = new body(0, 0, 0.01*H, 2*Earth.radius, 0, 0.273, "Moon", Earth, "Moon", "#888888");
-var Mars = new body(0, 0, 0.01*H, 0.25*H, 0, 0.14, "Planet", Sun, "Mars", "#C1440E");
-var Jupiter = new body(0, 0, 0.02*H, 0.5*H, 0, 0.0023, "Planet", Sun, "Jupiter", "#D8CA9D");
+var Earth = new body(0, 0, 0.015*H, 0.3*H, 0, 0.27, "Planet", Sun, "Earth", "#0000FF");
+var Moon = new body(0, 0, 0.01*H, 2*Earth.radius, 0, 2.73, "Moon", Earth, "Moon", "#888888");
+var Mars = new body(0, 0, 0.01*H, 0.25*H, 0, 1.4, "Planet", Sun, "Mars", "#C1440E");
+var Jupiter = new body(0, 0, 0.02*H, 0.5*H, 0, 0.023, "Planet", Sun, "Jupiter", "#D8CA9D");
 
 
 //ULTIMATE DRAW FUNCTION
