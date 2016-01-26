@@ -22,23 +22,18 @@ ctx.canvas.width  = window.innerWidth;
 ctx.canvas.height = window.innerHeight;
 var 	W = canvas.width,
 	H = canvas.height;
-var body = function(x, y, radius, orbitalradius, angle, anglechange, orbiting, name, colour){
+var body = function(x, y, radius, orbitalradius, angle, anglechange, name, colour){
 	this.x = x,
 	this.y = y, 
         this.radius = radius, 
         this.orbitalradius = orbitalradius, 
         this.radius = radius, 
         this.angle = 0,
-        this.anglechange = anglechange,
-        this.orbiting = orbiting, 
+        this.anglechange = anglechange, 
         this.name = name, 
         this.colour = colour;
 };
 body.prototype.draw = function(){
-       this.angle += this.anglechange;
-  
-	this.x = Math.cos(this.angle*(Math.PI/180))*(this.orbitalradius)+orbiting.x; 
-  	this.y = Math.sin(this.angle*(Math.PI/180))*(this.orbitalradius)+orbiting.y;
         ctx.font = "15px Verdana";
         ctx.fillStyle = "white";
         ctx.textAlign = "center";
@@ -47,12 +42,46 @@ body.prototype.draw = function(){
 	ctx.arc(this.x, this.y, this.radius, 0, 2*Math.PI);
 	ctx.fillStyle = this.colour;
   	ctx.fill();         
-}; 
-var Sun = new body(0.5*W, 0.5*H, 0.05*H, 0, 0, 0, Sun, "Sun", "#FFFF00"); 
-var Earth = new body(0, 0, 0.015*H, 0.3*H, 0, 0.365, Sun, "Earth", "#0000FF");
-var Moon = new body(0, 0, 0.01*H, 0.03*H, 0, 1.35, Earth,  "Moon", "#888888");
-var Mars = new body(0, 0, 0.01*H, 0.25*H, 0, 0.194, Sun,  "Mars", "#C1440E");
-var Jupiter = new body(0, 0, 0.02*H, 0.5*H, 0, 0.03, Sun, "Jupiter", "#D8CA9D");
+};    	
+var Earth = new body(0.5*H, 0.5*W, 0.015*H, 0.3*H, 0, 0.365, "Earth", "#0000FF");
+var Moon = new body(Earth.x, Earth.y, 0.01*H, 2*Earth.radius, 0, 1.35, "Moon", "#888888");
+var Mars = new body(0, 0, 0.01*H, 0.25*H, 0, 0.194, "Mars", "#C1440E");
+var Jupiter = new body(0, 0, 0.02*H, 0.5*H, 0, 0.03, "Jupiter", "#D8CA9D");
+var Sun = new body(0.5*W, 0.5*H, 0.05*H, 0, 0, 0, "Sun", "#FFFF00"); 
+//FUNCTIONS - DRAWING BODIES
+function drawMoon(){ 
+  	Moon.angle += Moon.anglechange;
+  
+	Moon.x = Math.cos(Moon.angle*(Math.PI/180))*(Moon.orbitalradius)+Earth.x; 
+  	Moon.y = Math.sin(Moon.angle*(Math.PI/180))*(Moon.orbitalradius)+Earth.y; 
+  
+	Moon.draw();
+};
+function drawEarth(){
+	Earth.angle += Earth.anglechange;
+	
+	Earth.x = Math.cos(Earth.angle*(Math.PI/180))*(Earth.orbitalradius)+Sun.y;
+  	Earth.y = Math.sin(Earth.angle*(Math.PI/180))*(Earth.orbitalradius)+Sun.y;
+        Earth.draw();
+};
+function drawMars(){
+	Mars.angle += Mars.anglechange;
+	
+	
+	Mars.x = Math.cos(Mars.angle*(Math.PI/180))*(Mars.orbitalradius)+Sun.x; 
+  	Mars.y = Math.sin(Mars.angle*(Math.PI/180))*(Mars.orbitalradius)+Sun.y;
+	
+  	
+  	Mars.draw();
+};
+function drawJupiter(){
+	Jupiter.angle += Jupiter.anglechange;
+	
+	Jupiter.x = Math.cos(Jupiter.angle*(Math.PI/180))*(Jupiter.orbitalradius)+Sun.x; 
+  	Jupiter.y = Math.sin(Jupiter.angle*(Math.PI/180))*(Jupiter.orbitalradius)+Sun.y;
+  	
+        Jupiter.draw();
+};
 //ULTIMATE DRAW FUNCTION
 function draw(){
 	ctx.clearRect(0, 0, W, H);
