@@ -61,7 +61,6 @@ var Jupiter = new body(0, 0, 0.02*H, 0.5*H, 0, 0.03, "Planet", Sun, "Jupiter", "
 
 //ULTIMATE DRAW FUNCTION
 function draw(){
-	ctx.clearRect(0, 0, W, H);
 	
 	ctx.font = "15px Verdana";
         ctx.fillStyle = "white";
@@ -75,6 +74,5 @@ function draw(){
   	Jupiter.draw();
   	
 };
-console.log(Earth.orbiting.x)
 setInterval(draw, 1000/60); //FUNCTION TO BE REPEATED, FRAMERATE
 </script>
