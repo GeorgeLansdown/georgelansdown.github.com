@@ -60,7 +60,7 @@ function drawMoon(){
 function drawEarth(){
 	Earth.angle += Earth.anglechange;
 	
-	Earth.x = Math.cos(Earth.angle*(Math.PI/180))*(Earth.orbitalradius)+Sun.y;
+	Earth.x = Math.cos(Earth.angle*(Math.PI/180))*(Earth.orbitalradius)+Sun.x;
   	Earth.y = Math.sin(Earth.angle*(Math.PI/180))*(Earth.orbitalradius)+Sun.y;
         Earth.draw();
 };
