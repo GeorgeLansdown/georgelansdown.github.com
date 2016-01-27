@@ -54,8 +54,8 @@ body.prototype.draw = function(){
   	this.angle += this.anglechange;
 	
 	if (this.name != "Sun"){
-		this.x = (Math.cos(this.angle*(Math.PI/180))*this.orbitalradius+this.orbiting.x)+xShift;
-		this.y = (Math.sin(this.angle*(Math.PI/180))*this.orbitalradius+this.orbiting.y)+yShift;
+		this.x = (Math.cos(this.angle*(Math.PI/180))*this.orbitalradius+this.orbiting.x);
+		this.y = (Math.sin(this.angle*(Math.PI/180))*this.orbitalradius+this.orbiting.y);
 	};
 };    
 
