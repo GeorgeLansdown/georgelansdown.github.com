@@ -30,14 +30,13 @@ function drawtext(text, x, y, align){
         ctx.fillText(text, x, y);
 };
 
-var body = function(x, y, radius, orbitalradius, angle, anglechange, type, orbiting, name, colour){
+var body = function(x, y, radius, orbitalradius, angle, anglechange, orbiting, name, colour){
 	this.x = x,
 	this.y = y, 
         this.radius = radius, 
         this.orbitalradius = orbitalradius, 
         this.angle = angle,
-        this.anglechange = anglechange, 
-        this.type = type,
+        this.anglechange = anglechange,
         this.orbiting = orbiting,
         this.name = name, 
         this.colour = colour;
@@ -52,17 +51,17 @@ body.prototype.draw = function(){
   	
   	this.angle += this.anglechange;
 	
-	if (this.type != "Star"){
+	if (this.name != "Sun"){
 		this.x = Math.cos(this.angle*(Math.PI/180))*(this.orbitalradius)+this.orbiting.x;
 		this.y = Math.sin(this.angle*(Math.PI/180))*(this.orbitalradius)+this.orbiting.y;
 	};
 };    
 
-var Sun = new body(0.5*W, 0.5*H, 0.05*H, 0, 0, 0, "Star", "null", "Sun", "#FFFF00"); 
-var Earth = new body(0, 0, 0.015*H, 0.3*H, 0, 0.27, "Planet", Sun, "Earth", "#0000FF");
-var Moon = new body(0, 0, 0.01*H, 2*Earth.radius, 0, 2.73, "Moon", Earth, "Moon", "#888888");
-var Mars = new body(0, 0, 0.01*H, 0.25*H, 0, 1.4, "Planet", Sun, "Mars", "#C1440E");
-var Jupiter = new body(0, 0, 0.02*H, 0.5*H, 0, 0.023, "Planet", Sun, "Jupiter", "#D8CA9D");
+var Sun = new body(0.5*W, 0.5*H, 0.05*H, 0, 0, 0, "null", "Sun", "#FFFF00"); 
+var Earth = new body(0, 0, 0.015*H, 0.3*H, 0, 0.27, Sun, "Earth", "#0000FF");
+var Moon = new body(0, 0, 0.01*H, 2*Earth.radius, 0, 2.73, Earth, "Moon", "#888888");
+var Mars = new body(0, 0, 0.01*H, 0.25*H, 0, 1.4, Sun, "Mars", "#C1440E");
+var Jupiter = new body(0, 0, 0.02*H, 0.5*H, 0, 0.023, Sun, "Jupiter", "#D8CA9D");
 
 
 //ULTIMATE DRAW FUNCTION
