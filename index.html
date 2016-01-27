@@ -20,6 +20,9 @@ ctx.canvas.height = window.innerHeight;
 var 	W = canvas.width,
 	H = canvas.height;
 
+var 	xShift = 60,
+	yShift = 0;
+	
 function drawtext(text, x, y, align){
         ctx.font = "15px Verdana", 
         ctx.fillStyle = "white",
@@ -37,20 +40,22 @@ var body = function(x, y, radius, orbitalradius, angle, anglechange, orbiting, n
         this.orbiting = orbiting,
         this.name = name, 
         this.colour = colour;
-};
-body.prototype.draw = function(){
-        drawtext(this.name, this.x, this.y-this.radius-15, "center");
-
+        
         ctx.beginPath();
-	ctx.arc(this.x, this.y, this.radius, 0, 2*Math.PI);
+	ctx.arc(this.x+xShift, this.y+yShift, this.radius, 0, 2*Math.PI);
 	ctx.fillStyle = this.colour;
   	ctx.fill();   
+};
+body.prototype.draw = function(){
+        drawtext(this.name, this.x+xShift, this.y-this.radius-15+yShift, "center");
+
+        
   	
   	this.angle += this.anglechange;
 	
 	if (this.name != "Sun"){
-		this.x = Math.cos(this.angle*(Math.PI/180))*(this.orbitalradius)+this.orbiting.x;
-		this.y = Math.sin(this.angle*(Math.PI/180))*(this.orbitalradius)+this.orbiting.y;
+		this.x = (Math.cos(this.angle*(Math.PI/180))*this.orbitalradius+this.orbiting.x)+xShift;
+		this.y = (Math.sin(this.angle*(Math.PI/180))*this.orbitalradius+this.orbiting.y)+yShift;
 	};
 };    
 
