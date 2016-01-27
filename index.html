@@ -19,17 +19,14 @@ ctx.canvas.width  = window.innerWidth;
 ctx.canvas.height = window.innerHeight;
 var 	W = canvas.width,
 	H = canvas.height;
-
 var 	xShift = -100,
 	yShift = 200;
-	
 function drawtext(text, x, y, align){
         ctx.font = "15px Verdana", 
         ctx.fillStyle = "white",
         ctx.textAlign = align, 
         ctx.fillText(text, x, y);
 };
-
 var body = function(x, y, radius, orbitalradius, angle, anglechange, orbiting, name, colour){
 	this.x = x,
 	this.y = y, 
@@ -52,13 +49,11 @@ body.prototype.draw = function(){
   	ctx.fill();   
 
   	this.angle += this.anglechange;
-	
 	if (this.name != "Sun"){
 		this.x = (Math.cos(this.angle*(Math.PI/180))*this.orbitalradius+this.orbiting.x);
 		this.y = (Math.sin(this.angle*(Math.PI/180))*this.orbitalradius+this.orbiting.y);
 	};
 };    
-
 var Sun = new body(0.5*W, 0.5*H, 0.05*H, 0, 0, 0, "null", "Sun", "#FFFF00"); 
 var Earth = new body(0, 0, 0.015*H, 0.3*H, 0, 0.27, Sun, "Earth", "#0000FF");
 var Moon = new body(0, 0, 0.01*H, 2*Earth.radius, 0, 2.73, Earth, "Moon", "#888888");
