@@ -41,16 +41,16 @@ var body = function(x, y, radius, orbitalradius, angle, anglechange, orbiting, n
         this.name = name, 
         this.colour = colour;
         
-        ctx.beginPath();
-	ctx.arc(this.x+xShift, this.y+yShift, this.radius, 0, 2*Math.PI);
-	ctx.fillStyle = this.colour;
-  	ctx.fill();   
+        
 };
 body.prototype.draw = function(){
         drawtext(this.name, this.x+xShift, this.y-this.radius-15+yShift, "center");
 
-        
-  	
+	ctx.beginPath();
+	ctx.arc(this.x+xShift, this.y+yShift, this.radius, 0, 2*Math.PI);
+	ctx.fillStyle = this.colour;
+  	ctx.fill();   
+
   	this.angle += this.anglechange;
 	
 	if (this.name != "Sun"){
