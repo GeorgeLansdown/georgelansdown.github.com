@@ -22,6 +22,14 @@ ctx.canvas.width  = window.innerWidth;
 ctx.canvas.height = window.innerHeight;
 var 	W = canvas.width,
 	H = canvas.height;
+
+function drawtext(text, x, y, align){
+        ctx.font = "15px Verdana", 
+        ctx.fillStyle = "white",
+        ctx.textAlign = align, 
+        ctx.fillText(text, x, y);
+};
+
 var body = function(x, y, radius, orbitalradius, angle, anglechange, type, orbiting, name, colour){
 	this.x = x,
 	this.y = y, 
@@ -35,10 +43,8 @@ var body = function(x, y, radius, orbitalradius, angle, anglechange, type, orbit
         this.colour = colour;
 };
 body.prototype.draw = function(){
-        ctx.font = "15px Verdana";
-        ctx.fillStyle = "white";
-        ctx.textAlign = "center";
-        ctx.fillText(this.name, this.x, this.y-this.radius-15);
+        drawtext(this.name, this.x, this.y-this.radius-15, "center");
+
         ctx.beginPath();
 	ctx.arc(this.x, this.y, this.radius, 0, 2*Math.PI);
 	ctx.fillStyle = this.colour;
@@ -63,10 +69,7 @@ var Jupiter = new body(0, 0, 0.02*H, 0.5*H, 0, 0.023, "Planet", Sun, "Jupiter", 
 function draw(){
 	ctx.clearRect(0, 0, W, H);
 	
-	ctx.font = "15px Verdana";
-        ctx.fillStyle = "white";
-        ctx.textAlign = "left";
-        ctx.fillText("George Lansdown - George@Lansdown.me", 0, H-5);
+	drawtext("George Lansdown - George@Lansdown.me", 0, H-5, "left");
 	
 	Sun.draw();
   	Earth.draw();
