@@ -70,16 +70,16 @@ document.addEventListener('keydown', function(event) {
 
 
 var Sun = new body(0.5*W, 0.5*H, 0.696342*H, 0, 0, 0, "null", "Sun", "#FFFF00"); 
-var Mercury = new body(0, 0, 0.002439*H, 0.1*H+Sun.radius, 0, 0.0000474, Sun, "Mercury", "#908C9A"); 
-var Venus = new body(0, 0, 0.006051*H, 0.2*H+Sun.radius, 0, 0.000035, Sun, "Venus", "#A57C1B"); 
-var Earth = new body(0, 0, 0.006371*H, 0.3*H+Sun.radius, 0, 0.0000298, Sun, "Earth", "#0000FF");
-var Moon = new body(0, 0, 0.001737*H, 2*Earth.radius, 0, 0.000001, Earth, "Moon", "#888888");
-var Mars = new body(0, 0, 0.003389*H, 0.4*H+Sun.radius, 0, 0.0000241, Sun, "Mars", "#C1440E");
-var Jupiter = new body(0, 0, 0.069611*H, 0.5*H+Sun.radius, 0, 0.0000131, Sun, "Jupiter", "#D8CA9D");
-var Saturn = new body(0, 0, 0.058232*H, 0.6*H+Sun.radius, 0, 0.0000097, Sun, "Saturn", "#EAD6B8"); 
-var Uranus = new body(0, 0, 0.025362*H, 0.7*H+Sun.radius, 0, 0.0000068, Sun, "Uranus", "#287290"); 
-var Neptune = new body(0, 0, 0.024622*H, 0.8*H+Sun.radius, 0, 0.0000054, Sun, "Neptune", "#70B7BA"); 
-var Pluto = new body(0, 0, 0.001186*H, 0.9*H+Sun.radius, 0, 0.0000047, Sun, "Pluto", "#CAB49F"); 
+var Mercury = new body(0, 0, 0.002439*H, 0.1*H+Sun.radius, 0, 0.0000474*H, Sun, "Mercury", "#908C9A"); 
+var Venus = new body(0, 0, 0.006051*H, 0.2*H+Sun.radius, 0, 0.000035*H, Sun, "Venus", "#A57C1B"); 
+var Earth = new body(0, 0, 0.006371*H, 0.3*H+Sun.radius, 0, 0.0000298*H, Sun, "Earth", "#0000FF");
+var Moon = new body(0, 0, 0.001737*H, 2*Earth.radius, 0, 0.000001*H, Earth, "Moon", "#888888");
+var Mars = new body(0, 0, 0.003389*H, 0.4*H+Sun.radius, 0, 0.0000241*H, Sun, "Mars", "#C1440E");
+var Jupiter = new body(0, 0, 0.069611*H, 0.5*H+Sun.radius, 0, 0.0000131*H, Sun, "Jupiter", "#D8CA9D");
+var Saturn = new body(0, 0, 0.058232*H, 0.6*H+Sun.radius, 0, 0.0000097*H, Sun, "Saturn", "#EAD6B8"); 
+var Uranus = new body(0, 0, 0.025362*H, 0.7*H+Sun.radius, 0, 0.0000068*H, Sun, "Uranus", "#287290"); 
+var Neptune = new body(0, 0, 0.024622*H, 0.8*H+Sun.radius, 0, 0.0000054*H, Sun, "Neptune", "#70B7BA"); 
+var Pluto = new body(0, 0, 0.001186*H, 0.9*H+Sun.radius, 0, 0.0000047*H, Sun, "Pluto", "#CAB49F"); 
 
 
 function draw(){
@@ -88,10 +88,16 @@ function draw(){
 	drawtext("George Lansdown - George@Lansdown.me", 0, H-5, "left");
 	
 	Sun.draw();
+	Mercury.draw();
+	Venus.draw();
   	Earth.draw();
-  	Mars.draw();
   	Moon.draw();
+  	Mars.draw();
   	Jupiter.draw();
+  	Saturn.draw();
+  	Uranus.draw();
+  	Neptune.draw();
+  	Pluto.draw();
   	
 };
 setInterval(draw, 1000/60); 
