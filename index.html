@@ -54,16 +54,16 @@ body.prototype.draw = function(){
 };    
 
 var Sun = new body(0.5*W, 0.5*H, 0.696342*H, 0, 0, 0, "null", "Sun", "#FFFF00"); 
-var Mercury = new body(0, 0, 0.002439*H, 0.579*H, 0, 0.0000474*H, Sun, "Mercury", "#908C9A"); 
-var Venus = new body(0, 0, 0.006051*H, 1.082*H, 0, 0.000035*H, Sun, "Venus", "#A57C1B"); 
-var Earth = new body(0, 0, 0.006371*H, 1.49.6*H, 0, 0.0000298*H, Sun, "Earth", "#0000FF");
+var Mercury = new body(0, 0, 0.002439*H, 0.579*H+Sun.radius, 0, 0.0000474*H, Sun, "Mercury", "#908C9A"); 
+var Venus = new body(0, 0, 0.006051*H, 1.082*H+Sun.radius, 0, 0.000035*H, Sun, "Venus", "#A57C1B"); 
+var Earth = new body(0, 0, 0.006371*H, 1.49.6*H+Sun.radius, 0, 0.0000298*H, Sun, "Earth", "#0000FF");
 var Moon = new body(0, 0, 0.001737*H, 0.00384*H, 0, 0.000001*H, Earth, "Moon", "#888888");
-var Mars = new body(0, 0, 0.003389*H, 2.279*H, 0, 0.0000241*H, Sun, "Mars", "#C1440E");
-var Jupiter = new body(0, 0, 0.069611*H, 7.786*H, 0, 0.0000131*H, Sun, "Jupiter", "#D8CA9D");
-var Saturn = new body(0, 0, 0.058232*H, 14.335*H, 0, 0.0000097*H, Sun, "Saturn", "#EAD6B8"); 
-var Uranus = new body(0, 0, 0.025362*H, 28.725*H, 0, 0.0000068*H, Sun, "Uranus", "#287290"); 
-var Neptune = new body(0, 0, 0.024622*H, 44.951*H, 0, 0.0000054*H, Sun, "Neptune", "#70B7BA"); 
-var Pluto = new body(0, 0, 0.001186*H, 59.064*H, 0, 0.0000047*H, Sun, "Pluto", "#CAB49F"); 
+var Mars = new body(0, 0, 0.003389*H, 2.279*H+Sun.radius, 0, 0.0000241*H, Sun, "Mars", "#C1440E");
+var Jupiter = new body(0, 0, 0.069611*H, 7.786*H+Sun.radius, 0, 0.0000131*H, Sun, "Jupiter", "#D8CA9D");
+var Saturn = new body(0, 0, 0.058232*H, 14.335*H+Sun.radius, 0, 0.0000097*H, Sun, "Saturn", "#EAD6B8"); 
+var Uranus = new body(0, 0, 0.025362*H, 28.725*H+Sun.radius, 0, 0.0000068*H, Sun, "Uranus", "#287290"); 
+var Neptune = new body(0, 0, 0.024622*H, 44.951*H+Sun.radius, 0, 0.0000054*H, Sun, "Neptune", "#70B7BA"); 
+var Pluto = new body(0, 0, 0.001186*H, 59.064*H+Sun.radius, 0, 0.0000047*H, Sun, "Pluto", "#CAB49F"); 
 
 document.addEventListener('keydown', function(event) {
 		if(event.keyCode == 87) { //up
