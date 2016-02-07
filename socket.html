@@ -1,9 +1,13 @@
+<script src="/socket.io/socket.io.js"></script>
+
+
+
+
 <script>
-var server = require('http').createServer();
-var io = require('socket.io')(server);
-io.on('connection', function(socket){
-  socket.on('event', function(data){});
-  socket.on('disconnect', function(){});
-});
-server.listen(3000);
+  var socket = io('http://localhost');
+  socket.on('news', function (data) {
+    console.log(data);
+    socket.emit('my other event', { my: 'data' });
+  });
 </script>
+
