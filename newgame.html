@@ -17,10 +17,6 @@ html, body {
 var 	canvas = document.querySelector('canvas'),
 	ctx = canvas.getContext('2d');
 	
-ctx.canvas.width  = window.innerWidth;
-ctx.canvas.height = window.innerHeight;
-
-var 	W = canvas.width,
-	H = canvas.height;
-
+var W = ctx.canvas.width  = window.innerWidth;
+var H = ctx.canvas.height = window.innerHeight;
 </script>
