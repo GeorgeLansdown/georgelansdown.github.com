@@ -14,12 +14,13 @@ html, body {
 
 
 <script>
+var 	canvas = document.querySelector('canvas'),
+	ctx = canvas.getContext('2d');
+	
+ctx.canvas.width  = window.innerWidth;
+ctx.canvas.height = window.innerHeight;
 
+var 	W = canvas.width,
+	H = canvas.height;
 
-
-
-
-
-
-setInterval(draw, 1000/60); //FUNCTION TO BE REPEATED, FRAMERATE
 </script>
