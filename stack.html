@@ -1,17 +1,13 @@
-<textarea id="myText" style="width: 925px; height: 252px;"></textarea>
-<img id="ItemPreview" src="" />
+<canvas id="c" style="width: 100%; height: 100%;"></canvas>
+
 <button type="button" id="myButton">Click me mofo</button>
 <script>
 //var stack = [1,2,3,4,5,6,7,8,9];
 //console.log(stack.pop());
 
 
-document.getElementById("myText").value = "Johnny Bravo";
-document.getElementById("myButton").onclick = function(){
-  if (document.getElementById("myText").value == "poop"){
-    document.getElementById("ItemPreview").src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAJCAIAAABv85FHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAdSURBVBhXY/gPAwwwgBAhVw6LUXAhcuXIdQsefQA0aIZ6M4nfrgAAAABJRU5ErkJggg==";
-  } else {
-    document.getElementById("ItemPreview").src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAJCAIAAABv85FHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAdSURBVBhXY/gPAwwwgBAhVw6LUXAhcuXIdQsefQA0aIZ6M4nfrgAAAABJRU5ErkJggg==";
-  };
+//document.getElementById("myButton").onclick = function(){
+console.log(c.createImageData(100, 100));
+
 }
 </script>
