@@ -1,0 +1,59 @@
+// ==ClosureCompiler==
+// @output_file_name default.js
+// @compilation_level ADVANCED_OPTIMIZATIONS
+// ==/ClosureCompiler==
+
+//Sun Animation
+//George Lansdown - 12/12/15
+//Setting canvas up
+var canvas = document.querySelector('canvas'), ctx = canvas.getContext('2d');
+//Canvas size
+ctx.canvas.width  = window.innerWidth;
+ctx.canvas.height = window.innerHeight;
+var W = canvas.width;
+var H = canvas.height;
+
+//Earth Parameters, default radius = 6.378
+var 	xEarth = 0.75*W, //Starting locations, scale to size of window
+    	yEarth = 0.5*H,
+    	aEarth = 0; //0 as default, starting angle of earth's roation
+var 	xMoon = xEarth+0.04*H, //Starting locations, scale to size of window
+    	yMoon = 400,
+    	aMoon = 0; //0 as default, starting angle of earth's roation
+var 	xSun = 0.5*W, //Locations, scale to size of window
+			ySun = 0.5*H;
+
+//Ultimate Draw function
+function draw(){ //Drawing
+	ctx.clearRect(0, 0, W, H);
+
+
+	ctx.beginPath();
+	ctx.arc(xSun, ySun, 0.1*H, 0, 6.28); //Creates circle
+  ctx.fillStyle = "#FFFF00"; //Yellow
+  ctx.fill();
+
+
+  aEarth += 0.6; //Size of angle increment, one orbit per 10 seconds, 36 degrees a second, 0.6 per tick
+
+	xEarth = Math.cos(aEarth*0.0174)*0.3*H+xSun; //Finds x coord for Earth using the formula cos(angle)*orbital radius + x origin. Features correction from radians to degrees.
+  yEarth = Math.sin(aEarth*0.0174)*0.3*H+ySun; //Finds y coord for Earth using the formula sin(angle)*orbital radius + y origin. Features correction from radians to degrees.
+
+	ctx.beginPath();
+	ctx.arc(xEarth, yEarth, 0.01*H, 0, 6.28); //Draws Earth Circle
+	ctx.fillStyle = "#0000FF"; //blue
+  ctx.fill();
+
+
+  aMoon += 3;
+
+	xMoon = Math.cos(aMoon*0.0174)*0.04*H+xEarth;
+  yMoon = Math.sin(aMoon*0.0174)*0.04*H+yEarth;
+
+	ctx.beginPath();
+	ctx.arc(xMoon, yMoon, 0.005*H, 0, 6.28);
+	ctx.fillStyle = "#888888";
+  ctx.fill();
+}
+//Run
+setInterval(draw, 1000/60);
