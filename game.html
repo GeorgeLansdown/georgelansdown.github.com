@@ -1,81 +1,38 @@
-<canvas id="myCanvas"></canvas>
-
-<style>
-/* CSS*/
-canvas { 
-	background: #000000; 
-}
-html, body {
-	width:  100%;
-	height: 100%;
-	margin: 0px;
-}
-</style>
-
-
+<body style="margin:0px">
+<canvas id="c" style="background:#000000;"></canvas>
 <script>
-
-var 	canvas = document.querySelector('canvas'),
-	ctx = canvas.getContext('2d');
-	
-ctx.canvas.width  = window.innerWidth;
+var canvas = document.getElementById('c'), ctx = canvas.getContext('2d');
+ctx.canvas.width = window.innerWidth;
 ctx.canvas.height = window.innerHeight;
-
-var 	W = canvas.width,
-	H = canvas.height;
+var W=canvas.width, H=canvas.height, x=W/2, y=H/2, xv=0, yv=0, mx=0, my=0, px=x, py=y, tx=mx, ty=my, shooting=false;
 	
-var 	xShip = 0.5*W,
-	yShip = 0.5*H-30,
-	vxShip = 0,
-	vyShip = 0,
-	angleShip = 270,
-	magnitudeShip = 0;
-	
-var 	rMoon = H,
-	xMoon = W,
-	yMoon = 1.5*H,
-	cMoon = "#888888"; //Grey
-
-function drawCircle(x, y, radius, colour){
-	ctx.beginPath();
-	ctx.arc(x, y, radius, 0, 2*Math.PI);
-	ctx.fillStyle = colour;
-  	ctx.fill();
-}
-function drawShip(){
-	PlanetAngle = (Math.PI/180)*Math.atan((yMoon - yShip)/(xMoon - xShip));
-	
-	xShip += Math.cos(PlanetAngle*(Math.PI/180));
-	yShip += Math.sin(PlanetAngle*(Math.PI/180));
-	
-	xShip += vxShip;
-	yShip += vyShip;
-	
-	drawCircle(xShip, yShip, 30, "#FFFF00");
-}
-
+document.onmousemove = function(e){mx=e.pageX; my=e.pageY;};
+document.onkeydown = function(e){if(e.which==83){yv=5}else if(e.which==68){xv=5}else if(e.which==87){yv=-5}else if(e.which==65){xv=-5}};
+document.onkeyup = function(e){if(e.which==83||e.which==87){yv=0}else if(e.which==68||e.which==65){xv=0}else if(e.which==32){shooting=true}};
+function shoot(){
+	if (Math.sqrt(Math.abs(px-tx)^2+Math.abs(py-ty)^2)&&shooting){
+		oy=ty-py;
+		ox=tx-px;
+		px+=0.2*ox;
+		py+=0.2*oy;
+	}else{shooting=false,px=x,py=y}
+};
 function draw(){
-	ctx.clearRect(0, 0, W, H);
-	drawCircle(xMoon, yMoon, rMoon, cMoon); //Moon
-	drawShip();
-	drawEarth();
+	ctx.clearRect(0,0, W, H);
+	if(x+xv<W&&x+xv>0){
+		x+=xv
+	};
+	if(y+yv<H&&y+yv>0){
+		y+=yv
+	};
+	if(!shooting){tx=mx,ty=my,px=x, py=y};
+	shoot()
+	ctx.beginPath();
+	ctx.arc(x,y,10,0,2*Math.PI);
+	ctx.fillRect(px,py,5,5);
+	ctx.fillStyle = "#FFFFFF"; 
+	ctx.fill();
 }
-
-
-document.addEventListener('keydown', function(event) {
-		if(event.keyCode == 38) { //up
-			vxShip += Math.cos(angleShip*(Math.PI/180)); 
-			vyShip += Math.sin(angleShip*(Math.PI/180));
-		} else if(event.keyCode == 39) { //right
-			angleShip += 45; 
-		} else if (event.keyCode == 40) { //down
-			vxShip -= Math.cos(angleShip*(Math.PI/180)); 
-			vyShip -= Math.sin(angleShip*(Math.PI/180));
-		} else if (event.keyCode == 37) { //left
-			angleShip -= 45;
-		}
-	
-});
-
-setInterval(draw, 1000/60); //FUNCTION TO BE REPEATED, FRAMERATE
+setInterval(draw, 16.7);
 </script>
+</body>
