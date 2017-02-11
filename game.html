@@ -4,18 +4,18 @@
 var canvas = document.getElementById('c'), ctx = canvas.getContext('2d');
 ctx.canvas.width = window.innerWidth;
 ctx.canvas.height = window.innerHeight;
-var W=canvas.width, H=canvas.height, x=W/2, y=H/2, xv=0, yv=0, mx=0, my=0, px=x, py=y, tx=mx, ty=my, shooting=false;
+var W=canvas.width, H=canvas.height, x=W/2, y=H/2, xv=0, yv=0, mx=0, my=0, px=x, py=y, tx=mx, ty=my, shooting=false, enemies=[], j=Math.random, o=Math.round, l=Math.abs;	
+for(i=0;i<30;i++){enemies.push([1000*j(),1000*j()])};	
 	
 document.onmousemove = function(e){mx=e.pageX; my=e.pageY;};
 document.onkeydown = function(e){if(e.which==83){yv=5}else if(e.which==68){xv=5}else if(e.which==87){yv=-5}else if(e.which==65){xv=-5}};
 document.onkeyup = function(e){if(e.which==83||e.which==87){yv=0}else if(e.which==68||e.which==65){xv=0}else if(e.which==32){shooting=true}};
 function shoot(){
-	if (Math.sqrt(Math.abs(px-tx)^2+Math.abs(py-ty)^2)&&shooting){
-		oy=ty-py;
-		ox=tx-px;
-		px+=0.2*ox;
-		py+=0.2*oy;
-	}else{shooting=false,px=x,py=y}
+	if (shooting){
+		if(Math.sqrt(l(px-tx)^2+l(py-ty)^2)){
+			px+=0.2*(tx-px);
+			py+=0.2*(ty-py);
+		}else{ctx.strokeStyle="#FF0000",ctx.strokeRect(tx-50,ty-50,100,100),shooting=false,px=x,py=y}}
 };
 function draw(){
 	ctx.clearRect(0,0, W, H);
@@ -27,8 +27,8 @@ function draw(){
 	};
 	if(!shooting){tx=mx,ty=my,px=x, py=y};
 	shoot()
-	ctx.beginPath();
-	ctx.arc(x,y,10,0,2*Math.PI);
+	for(enemy in enemies){if(shooting&&l(enemies[enemy][0]-px)<55&&l(enemies[enemy][1]-py)<55){enemies.pop(enemy)}else{if(0<enemies[enemy][0]+5*o(j()*2-1)<W){enemies[enemy][0]+=5*o(j()*2-1)}l;if(0<enemies[enemy][1]+5*o(j()*2-1)<H){enemies[enemy][1]+=5*o(j()*2-1)};ctx.fillRect(enemies[enemy][0],enemies[enemy][1],10,10)}};
+	ctx.fillRect(x,y,10,10);
 	ctx.fillRect(px,py,5,5);
 	ctx.fillStyle = "#FFFFFF"; 
 	ctx.fill();
