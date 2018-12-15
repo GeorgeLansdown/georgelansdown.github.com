@@ -511,7 +511,7 @@ Dot.prototype.collide = function( otherDot ) {
 
 Dot.prototype.draw = function() {
 	ctx.beginPath();
-	ctx.arc( this.x, this.y, this.radius, 0, TWOPI );
+        ctx.fillText("Hello World", this.x, this.y);
 	ctx.fillStyle = palettes[ paletteCurrent ][ this.color ];
 	ctx.fill();
 };
@@ -519,6 +519,7 @@ Dot.prototype.draw = function() {
 function init() {
 	canvas = document.getElementById( 'canvas' );
 	ctx = canvas.getContext( '2d' );
+	ctx.font = "5px Arial";
   
   
   var bee = document.getElementById("bee");
@@ -652,7 +653,6 @@ function step() {
 
 function draw() {
 	ctx.fillStyle = palettes[ paletteCurrent ][ 0 ];
-	ctx.fillRect( 0, 0, width, height );
 	
 	var i = dots.length;
 	while( i-- ) {
