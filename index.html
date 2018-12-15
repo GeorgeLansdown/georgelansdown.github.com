@@ -7,20 +7,6 @@
 <title>MERY CHRIDTMAS</title>
 </head>
 
-<div id="container">
-	<div id="butterfly">
-		<div id="leftwing"></div>
-		<div id="rightwing"></div>
-	</div>
-	
-	<div id="futterbly">
-		<div class="left wing"></div>
-		<div class="right wing"></div>
-	</div>
-	
-<div>
-	<canvas id="canvas" width="550" height="500"></canvas>
-</div>
 <a href="https://createjs.com/" target="_blank"><img class="logo white"></a>
 
 <div id="badges">
@@ -192,6 +178,7 @@ Dot.prototype.collide = function( otherDot ) {
 
 Dot.prototype.draw = function() {
 	ctx.beginPath();
+	ctx.font = "50px Arial";
         ctx.fillText("Happy Holidays Beché", this.x, this.y);
 	ctx.fillStyle = palettes[ paletteCurrent ][ this.color ];
 	ctx.fill();
